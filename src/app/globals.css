@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0A1F44;
+
+  /* Custom LNS Colors */
+  --lns-navy: #0A1F44;
+  --lns-red: #D62B2B;
+  --lns-white: #FFFFFF;
+  --lns-light-grey: #F4F5F7;
+  --lns-mid-grey: #8C92A0;
+  --lns-dark-grey: #2E3A4E;
+  --lns-border: #E0E3EA;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-lns-navy: var(--lns-navy);
+  --color-lns-red: var(--lns-red);
+  --color-lns-white: var(--lns-white);
+  --color-lns-light-grey: var(--lns-light-grey);
+  --color-lns-mid-grey: var(--lns-mid-grey);
+  --color-lns-dark-grey: var(--lns-dark-grey);
+  --color-lns-border: var(--lns-border);
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-manrope);
+  --font-mono: var(--font-mono);
+
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), ui-sans-serif, system-ui;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-manrope);
+  font-weight: 700;
+}
+
+/* Custom Utilities */
+@layer base {
+  * {
+    @apply border-lns-border;
+  }
+}
