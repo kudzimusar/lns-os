@@ -30,6 +30,11 @@ export default function StudentProfileClient({ params }: { params: { id: string 
 
   const stats = [
     { label: "Grade Index", value: `${student.powerScore}%`, icon: Zap, color: "text-lns-navy" },
+    { label: "Attendance", value: "98.4%", icon: Clock, color: "text-green-500" },
+    { label: "Merits Earned", value: "450", icon: Award, color: "text-lns-red" },
+    { label: "Citizenship", value: student.citizenship, icon: ShieldCheck, color: "text-green-600" },
+  ];
+
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-20 p-4">
       {/* Header */}
