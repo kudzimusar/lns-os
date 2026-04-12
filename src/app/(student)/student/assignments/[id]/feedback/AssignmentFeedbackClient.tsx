@@ -17,7 +17,6 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-}
 
 export default function AssignmentFeedbackClient({ params }: { params: { id: string } }) {
   const assignment = ASSIGNMENTS.find(a => a.id === params.id && a.status === 'Completed');

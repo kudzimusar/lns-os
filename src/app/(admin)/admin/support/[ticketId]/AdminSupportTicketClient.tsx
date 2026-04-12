@@ -38,8 +38,6 @@ const ticket = {
     { ticketId: 'TKT-880' },
     { ticketId: 'TKT-879' },
   ];
-}
-
 export default function AdminSupportTicketClient({ params }: { params: { ticketId: string } }) {
   return (
     <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-20 p-4 max-w-5xl mx-auto">

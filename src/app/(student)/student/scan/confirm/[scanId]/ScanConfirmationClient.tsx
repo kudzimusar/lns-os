@@ -10,8 +10,6 @@ import { cn } from "@/lib/utils";
     { scanId: 'scan-eng-7a' },
     { scanId: 'scan-sci-8b' },
   ];
-}
-
 export default function ScanConfirmationClient({ params }: { params: { scanId: string } }) {
   // Mock scan data
   const scanDetails = {

@@ -15,8 +15,6 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-}
-
 export default function AssignmentSubmittedClient({ params }: { params: { id: string } }) {
   const assignment = ASSIGNMENTS.find(a => a.id === params.id);
   const timestamp = new Date().toLocaleString();

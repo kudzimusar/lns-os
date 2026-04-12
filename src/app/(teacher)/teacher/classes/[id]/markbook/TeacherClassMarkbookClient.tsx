@@ -27,8 +27,6 @@ const COHORTS = [
   { id: '11a-comm', name: 'Grade 11-A Communication', count: 24, room: 'Theatre II', time: '14:00 - 15:30', days: 'Mon, Wed', performance: 91.2, attendance: 98.4 },
 ];
 
-}
-
 export default function TeacherClassMarkbookClient({ params }: { params: { id: string } }) {
   const cohort = COHORTS.find(c => c.id === params.id) || COHORTS[0];
   const myStudents = PLACEHOLDER_STUDENTS.filter(s => s.class === cohort.id || cohort.id.includes(s.class.toLowerCase().replace(' ', ''))); 

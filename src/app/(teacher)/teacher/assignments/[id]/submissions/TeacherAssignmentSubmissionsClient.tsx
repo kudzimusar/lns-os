@@ -25,8 +25,6 @@ const ASSIGNMENTS = [
   { id: '1', title: "Modernist Poetry Analysis", category: "Communications", dueDate: "Tomorrow, 4 PM", submissions: 24, total: 32, marked: 12, avg: 82, high: 98, status: "Active" },
 ];
 
-}
-
 export default function TeacherAssignmentSubmissionsClient({ params }: { params: { id: string } }) {
   const assignment = ASSIGNMENTS.find(a => a.id === params.id) || ASSIGNMENTS[0];
   const progress = Math.round((assignment.submissions / assignment.total) * 100);

@@ -27,8 +27,6 @@ const FILES = [
   { id: 'file-4', name: "Campus_Redesign_Render.png", size: "8.5 MB", type: "Image", owner: "IT Dept", date: "2026-04-05" },
 ];
 
-}
-
 export default function DocumentViewerClient({ params }: { params: { fileId: string } }) {
   const router = useRouter();
   const file = FILES.find(f => f.id === params.fileId) || FILES[0];

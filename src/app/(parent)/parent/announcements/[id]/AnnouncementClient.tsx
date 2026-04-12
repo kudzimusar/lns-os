@@ -23,8 +23,6 @@ import { cn } from "@/lib/utils";
     { id: 'ann-003' },
     { id: 'ann-004' },
   ];
-}
-
 export default function AnnouncementClient({ params }: { params: { id: string } }) {
   // Mock announcement details based on ID
   const announcement = {

@@ -19,8 +19,6 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-}
-
 export default function ChildAttendanceClient({ params }: { params: { studentId: string } }) {
   const student = PLACEHOLDER_STUDENTS.find(s => s.id === params.studentId) || PLACEHOLDER_STUDENTS[0];
 

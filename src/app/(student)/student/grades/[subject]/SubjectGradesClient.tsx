@@ -23,8 +23,6 @@ const getTeacher = (subjectName: string) => {
   return PLACEHOLDER_TEACHERS.find(t => t.subject.includes(subjectName)) || PLACEHOLDER_TEACHERS[0];
 };
 
-}
-
 export default function SubjectGradesClient({ params }: { params: { subject: string } }) {
   // Find subject from params (handling slug)
   const subject = SUBJECTS.find(s => s.name.toLowerCase().replace(/[^a-z0-9]/g, '-') === params.subject) || SUBJECTS[0];

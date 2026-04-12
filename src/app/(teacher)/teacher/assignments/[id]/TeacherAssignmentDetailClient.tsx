@@ -30,8 +30,6 @@ const ASSIGNMENTS = [
   { id: '4', title: "IB MYP: Criterion A Project", category: "IB Core", dueDate: "20 Apr", submissions: 5, total: 32, marked: 0, avg: 0, high: 0, status: "Active" },
 ];
 
-}
-
 export default function TeacherAssignmentDetailClient({ params }: { params: { id: string } }) {
   const assignment = ASSIGNMENTS.find(a => a.id === params.id) || ASSIGNMENTS[0];
 

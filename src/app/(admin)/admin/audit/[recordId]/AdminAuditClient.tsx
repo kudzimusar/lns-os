@@ -31,8 +31,6 @@ const MOCK_RECORDS = [
     { recordId: 'rec-88221' },
     { recordId: 'rec-88222' },
   ];
-}
-
 export default function AdminAuditClient({ params }: { params: { recordId: string } }) {
   const [isVerifying, setIsVerifying] = React.useState(false);
   const [isVerified, setIsVerified] = React.useState(false);

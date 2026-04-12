@@ -17,8 +17,6 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 
-}
-
 export default function AssignmentSubmissionClient({ params }: { params: { id: string } }) {
   const router = useRouter();
   const assignment = ASSIGNMENTS.find(a => a.id === params.id);

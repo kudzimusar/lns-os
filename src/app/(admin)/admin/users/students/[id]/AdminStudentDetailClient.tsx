@@ -27,8 +27,6 @@ import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-}
-
 export default function AdminStudentDetailClient({ params }: { params: { id: string } }) {
   const student = PLACEHOLDER_STUDENTS.find(s => s.id === params.id) || PLACEHOLDER_STUDENTS[0];
 

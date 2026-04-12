@@ -30,14 +30,6 @@ const ASSIGNMENTS = [
   { id: '1', title: "Modernist Poetry Analysis", category: "Communications", totalMarks: 32 },
 ];
 
-  ASSIGNMENTS.forEach(a => {
-    PLACEHOLDER_STUDENTS.forEach(s => {
-      params.push({ id: a.id, studentId: s.id });
-    });
-  });
-  return params;
-}
-
 export default function TeacherMarkingSubmissionsClient({ params }: { params: { id: string, studentId: string } }) {
   const student = PLACEHOLDER_STUDENTS.find(s => s.id === params.studentId) || PLACEHOLDER_STUDENTS[0];
   const assignment = ASSIGNMENTS.find(a => a.id === params.id) || ASSIGNMENTS[0];

@@ -35,8 +35,6 @@ const TEACHERS = [
   { id: 'tea-001', name: 'James Okafor', subject: 'Mathematics', sessions: 12, status: 'Synced', email: 'j.okafor@lns.edu' },
 ];
 
-}
-
 export default function AdminTeacherDetailClient({ params }: { params: { id: string } }) {
   const teacher = TEACHERS.find(t => t.id === params.id) || TEACHERS[0];
 

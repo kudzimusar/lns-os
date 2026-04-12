@@ -26,8 +26,6 @@ const getGradeLetter = (pct: number) => {
   return 'C+';
 };
 
-}
-
 export default function ChildGradesClient({ params }: { params: { studentId: string } }) {
   const student = PLACEHOLDER_STUDENTS.find(s => s.id === params.studentId) || PLACEHOLDER_STUDENTS[0];
 
