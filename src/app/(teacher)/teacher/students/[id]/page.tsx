@@ -15,7 +15,8 @@ import {
   ArrowLeft,
   FileText,
   TrendingUp,
-  AlertCircle
+  AlertCircle,
+  PlusCircle
 } from "lucide-react";
 import Link from "next/link";
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
@@ -28,6 +29,21 @@ const performanceData = [
 ];
 
 export default function StudentProfileView({ params }: { params: { id: string } }) {
+  // In a real app, you'd fetch student data by ID. 
+  // For the shell, we'll use mocked data for Abraham Lincoln.
+  const student = {
+    id: params.id || "1024",
+    name: "Abraham Lincoln",
+    grade: "10-A",
+    age: 16,
+    email: "a.lincoln@student.lns.edu",
+    phone: "+27 82 123 4567",
+    address: "No. 12 Gettysburg Road, Pretoria",
+    parent: "Thomas Lincoln",
+    powerScore: 88,
+    attendance: "95%",
+  };
+
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-12">
       <div className="flex items-center space-x-4">
@@ -38,7 +54,7 @@ export default function StudentProfileView({ params }: { params: { id: string } 
         </Link>
         <div>
           <h1 className="text-3xl font-[800] text-lns-navy tracking-tight">Student Profile</h1>
-          <p className="text-lns-mid-grey font-medium uppercase tracking-[0.2em] text-[10px]">Academic Record: #LNS-{params.id}</p>
+          <p className="text-lns-mid-grey font-medium uppercase tracking-[0.2em] text-[10px]">Academic Record: #LNS-{student.id}</p>
         </div>
       </div>
 
@@ -56,8 +72,8 @@ export default function StudentProfileView({ params }: { params: { id: string } 
             <CardContent className="pt-16 pb-8 px-8">
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="text-2xl font-[800] text-lns-navy">Abraham Lincoln</h2>
-                  <p className="text-sm font-bold text-lns-mid-grey">Grade 10-A • 16 Years Old</p>
+                  <h2 className="text-2xl font-[800] text-lns-navy">{student.name}</h2>
+                  <p className="text-sm font-bold text-lns-mid-grey">Grade {student.grade} • {student.age} Years Old</p>
                 </div>
                 <div className="p-2 bg-amber-50 rounded-xl">
                    <Award className="text-amber-500" size={20} />
@@ -67,22 +83,22 @@ export default function StudentProfileView({ params }: { params: { id: string } 
               <div className="mt-8 space-y-4">
                  <div className="flex items-center space-x-3 text-sm font-medium text-lns-navy">
                     <Mail size={16} className="text-lns-mid-grey" />
-                    <span>a.lincoln@student.lns.edu</span>
+                    <span>{student.email}</span>
                  </div>
                  <div className="flex items-center space-x-3 text-sm font-medium text-lns-navy">
                     <Phone size={16} className="text-lns-mid-grey" />
-                    <span>+27 82 123 4567</span>
+                    <span>{student.phone}</span>
                  </div>
                  <div className="flex items-center space-x-3 text-sm font-medium text-lns-navy">
                     <MapPin size={16} className="text-lns-mid-grey" />
-                    <span>No. 12 Gettysburg Road, Pretoria</span>
+                    <span>{student.address}</span>
                  </div>
               </div>
 
               <div className="mt-8 pt-8 border-t border-lns-border space-y-2">
                  <p className="text-[10px] font-black uppercase tracking-widest text-lns-mid-grey">Parent / Guardian</p>
                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-bold text-lns-navy">Thomas Lincoln</span>
+                    <span className="text-sm font-bold text-lns-navy">{student.parent}</span>
                     <Button size="icon" variant="outline" className="h-8 w-8 rounded-full border-lns-border">
                       <Mail size={14} />
                     </Button>
@@ -94,12 +110,12 @@ export default function StudentProfileView({ params }: { params: { id: string } 
           <div className="flex gap-4">
              <Card className="flex-1 border-none shadow-sm bg-lns-navy text-white p-6">
                 <Zap className="text-lns-red mb-2" size={20} />
-                <p className="text-2xl font-[900]">88</p>
+                <p className="text-2xl font-[900]">{student.powerScore}</p>
                 <p className="text-[10px] uppercase font-bold text-lns-mid-grey">Power Score</p>
              </Card>
              <Card className="flex-1 border-none shadow-sm bg-white p-6">
                 <Calendar className="text-blue-600 mb-2" size={20} />
-                <p className="text-2xl font-[900] text-lns-navy">95%</p>
+                <p className="text-2xl font-[900] text-lns-navy">{student.attendance}</p>
                 <p className="text-[10px] uppercase font-bold text-lns-mid-grey">Attendance</p>
              </Card>
           </div>
@@ -133,7 +149,7 @@ export default function StudentProfileView({ params }: { params: { id: string } 
                  <CardContent className="space-y-3">
                     <div className="flex items-center justify-between p-3 rounded-xl bg-green-50 border border-green-100">
                        <div className="flex items-center space-x-3">
-                          <PlusCircleIcon className="text-green-600" />
+                          <PlusCircle className="text-green-600" size={18} />
                           <div>
                              <p className="text-xs font-bold text-lns-navy">Global Citizenship</p>
                              <p className="text-[9px] text-green-700 font-bold uppercase tracking-tighter">Verified on Chain</p>
@@ -143,7 +159,7 @@ export default function StudentProfileView({ params }: { params: { id: string } 
                     </div>
                     <div className="flex items-center justify-between p-3 rounded-xl bg-green-50 border border-green-100">
                        <div className="flex items-center space-x-3">
-                          <PlusCircleIcon className="text-green-600" />
+                          <PlusCircle className="text-green-600" size={18} />
                           <div>
                              <p className="text-xs font-bold text-lns-navy">Math Olympiad</p>
                              <p className="text-[9px] text-green-700 font-bold uppercase tracking-tighter">External Award</p>
@@ -201,13 +217,5 @@ export default function StudentProfileView({ params }: { params: { id: string } 
         </div>
       </div>
     </div>
-  );
-}
-
-function PlusCircleIcon({ className }: { className?: string }) {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/>
-    </svg>
   );
 }
