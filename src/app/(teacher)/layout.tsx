@@ -22,7 +22,8 @@ import {
   BrainCircuit, 
   BarChart3, 
   MessageSquare, 
-  FileText 
+  FileText,
+  Bus
 } from "lucide-react";
 
 const teacherMenuItems: SidebarItem[] = [
@@ -31,6 +32,7 @@ const teacherMenuItems: SidebarItem[] = [
   { name: "QR Scanner", icon: QrCode, href: "/teacher/scanner", section: "1" },
   { name: "Gradebook", icon: BookOpen, href: "/teacher/gradebook", section: "1" },
   { name: "Assignments", icon: ClipboardList, href: "/teacher/assignments", section: "1" },
+  { name: "Trips", icon: Bus, href: "/teacher/trips", section: "1" },
   { name: "Assessments", icon: GraduationCap, href: "/teacher/assessments", section: "1" },
   { name: "Approvals", icon: BrainCircuit, href: "/teacher/approvals", section: "1" },
   

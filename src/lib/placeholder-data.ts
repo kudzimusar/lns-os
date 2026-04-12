@@ -1,6 +1,6 @@
-// src/lib/placeholder-data.ts
+import { Student, Teacher, Assignment, Subject, ParentChildren, MessageThread } from '@/types';
 
-export const PLACEHOLDER_STUDENTS = [
+export const PLACEHOLDER_STUDENTS: Student[] = [
   { id: 'student-001', name: 'Amara Johnson', class: 'Grade 7A', idNumber: 'LNS-2026-001', citizenship: 'PLATINUM', powerScore: 94.2, attendance: '98%', status: 'Good', grade: 7, age: 13 },
   { id: 'student-002', name: 'Blake Nkosi', class: 'Grade 7A', idNumber: 'LNS-2026-002', citizenship: 'GOLD', powerScore: 88.5, attendance: '96%', status: 'Good', grade: 7, age: 13 },
   { id: 'student-003', name: 'Cara Mensah', class: 'Grade 7B', idNumber: 'LNS-2026-003', citizenship: 'SILVER', powerScore: 76.1, attendance: '92%', status: 'Caution', grade: 7, age: 13 },
@@ -9,7 +9,7 @@ export const PLACEHOLDER_STUDENTS = [
   { id: 'student-006', name: 'Fatima Al-Rashid', class: 'Grade 8B', idNumber: 'LNS-2026-006', citizenship: 'PLATINUM', powerScore: 92.3, attendance: '99%', status: 'Good', grade: 8, age: 14 },
 ];
 
-export const PLACEHOLDER_TEACHERS = [
+export const PLACEHOLDER_TEACHERS: Teacher[] = [
   { id: 'teacher-001', name: 'Mr. James Okafor', subject: 'Mathematics' },
   { id: 'teacher-002', name: 'Ms. Sarah Chen', subject: 'Communications (English)' },
   { id: 'teacher-003', name: 'Mr. David Petrov', subject: 'Science' },
@@ -17,7 +17,7 @@ export const PLACEHOLDER_TEACHERS = [
   { id: 'teacher-005', name: 'Mr. Luke Bennett', subject: 'Arts' },
 ];
 
-export const SUBJECTS = [
+export const SUBJECTS: Subject[] = [
   { name: 'Mathematics', weight: 25 },
   { name: 'Communications (English)', weight: 20 },
   { name: 'Science', weight: 20 },
@@ -26,11 +26,11 @@ export const SUBJECTS = [
   { name: 'Physical Education', weight: 10 },
 ];
 
-export const PARENT_CHILDREN = [
+export const PARENT_CHILDREN: ParentChildren[] = [
   { parentId: 'parent-001', childrenIds: ['student-001', 'student-004'] } // Parent of Amara and David
 ];
 
-export const ASSIGNMENTS = [
+export const ASSIGNMENTS: Assignment[] = [
   { 
     id: 'asg-001', 
     title: 'Modernist Poetry Analysis', 
@@ -60,7 +60,7 @@ export const ASSIGNMENTS = [
   },
 ];
 
-export const MESSAGE_THREADS = [
+export const MESSAGE_THREADS: MessageThread[] = [
   {
     id: 'thread-001',
     participant: { name: 'Ms. Sarah Chen', role: 'Teacher', avatar: '/avatars/teacher-002.jpg' },
