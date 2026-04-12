@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import ParentMessagesPage from "../page";
 import { MESSAGE_THREADS } from "@/lib/placeholder-data";

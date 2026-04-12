@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { AssignmentsLayout } from "@/components/student/AssignmentsLayout";
 import { ASSIGNMENTS } from "@/lib/placeholder-data";

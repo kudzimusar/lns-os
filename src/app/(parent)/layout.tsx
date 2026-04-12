@@ -11,22 +11,17 @@ import {
   User,
   Settings,
   HelpCircle,
-  Users
+  Users,
+  Home,
+  CalendarCheck,
+  Bell,
+  FileText
 } from "lucide-react";
 import { TopBar } from "@/components/layout/TopBar";
 import { BottomNav } from "@/components/mobile/BottomNav";
 import { MobileHeader } from "@/components/mobile/MobileHeader";
 import { Sidebar, SidebarItem } from "@/components/tablet/Sidebar";
 import { AIInitializer } from "@/components/ai/AIInitializer";
-import { 
-  Home, 
-  Users, 
-  CalendarCheck, 
-  GraduationCap, 
-  MessageSquare, 
-  Bell, 
-  FileText 
-} from "lucide-react";
 
 const parentSidebarItems: SidebarItem[] = [
   { name: "Home", icon: Home, href: "/parent/dashboard", section: "1" },

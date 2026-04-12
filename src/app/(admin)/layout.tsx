@@ -12,22 +12,14 @@ import {
   Megaphone,
   LayoutDashboard,
   HelpCircle,
-  FileText
+  FileText,
+  BrainCircuit
 } from "lucide-react";
 import { TopBar } from "@/components/layout/TopBar";
 import { BottomNav } from "@/components/mobile/BottomNav";
 import { MobileHeader } from "@/components/mobile/MobileHeader";
 import { Sidebar, SidebarItem } from "@/components/tablet/Sidebar";
 import { AIInitializer } from "@/components/ai/AIInitializer";
-import { 
-  BarChart3, 
-  Users, 
-  Settings, 
-  ShieldAlert, 
-  Megaphone,
-  LayoutDashboard,
-  BrainCircuit
-} from "lucide-react";
 
 const adminSidebarItems: SidebarItem[] = [
   { name: "Overview", icon: LayoutDashboard, href: "/admin/dashboard", section: "1" },
