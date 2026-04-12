@@ -32,24 +32,111 @@
 
   --radius-xl: 12px;
   --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-4xl: 32px;
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Tablet Specific Tokens */
+  --text-tablet-title: 24px;
+  --text-tablet-heading: 18px;
+  --text-tablet-body: 15px;
+  --text-tablet-label: 13px;
+
+  --spacing-tablet-gutter: 24px;
+  --spacing-tablet-section: 32px;
+  --spacing-touch-target: 48px;
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .glass-header {
+    @apply bg-white/80 backdrop-blur-xl border-b border-gray-100/50;
+  }
+  
+  .glass-nav {
+    @apply bg-white/80 backdrop-blur-xl border-t border-gray-100/50;
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Tablet Layout Utilities */
+  .tablet-container {
+    @apply p-6 md:p-8 lg:p-10;
+  }
+
+  .tablet-grid {
+    @apply grid gap-6 md:gap-8;
+  }
+
+  /* Native-feel touch adjustments */
+  .touch-target {
+    @apply min-h-[48px] min-w-[48px] flex items-center justify-center;
+  }
+
+  .tablet-table-wrapper {
+    @apply overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sticky-col {
+    @apply sticky left-0 z-10 bg-inherit;
+  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), ui-sans-serif, system-ui;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-manrope);
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 /* Custom Utilities */
 @layer base {
   * {
     @apply border-lns-border;
+  }
+}
+
+@layer utilities {
+  /* Prevent sticky hover on touch devices */
+  @media (hover: hover) {
+    .touch-hover:hover {
+      @apply bg-gray-50;
+    }
+    .touch-hover-navy:hover {
+      @apply bg-lns-navy/5;
+    }
+  }
+  
+  .tablet-title {
+    font-size: var(--text-tablet-title);
+    @apply font-black tracking-tighter uppercase;
+  }
+  
+  .tablet-heading {
+    font-size: var(--text-tablet-heading);
+    @apply font-black tracking-tight uppercase;
+  }
+  
+  .tablet-body {
+    font-size: var(--text-tablet-body);
   }
 }
