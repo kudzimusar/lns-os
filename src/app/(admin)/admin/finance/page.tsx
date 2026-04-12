@@ -37,7 +37,8 @@ import {
   Tooltip, 
   Cell,
   PieChart,
-  Pie
+  Pie,
+  CartesianGrid
 } from "recharts";
 
 const financeStats = [

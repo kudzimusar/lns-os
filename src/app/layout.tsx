@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full" suppressHydrationWarning>
       <body
         className={`${manrope.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased h-full text-lns-dark-grey`}
       >

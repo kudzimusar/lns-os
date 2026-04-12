@@ -27,6 +27,18 @@ export interface MessageThread {
   messages: Message[];
 }
 
+export interface Trip {
+  id: string;
+  title: string;
+  date: string;
+  location: string;
+  status: string;
+  category?: string;
+  maxStudents?: number;
+  progress?: number;
+  students?: Student[];
+}
+
 export interface Subject {
   name: string;
   weight: number;
