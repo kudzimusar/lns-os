@@ -28,9 +28,7 @@ const MOCK_RECORDS = [
   { id: 'rec-88220', type: 'Attendance Locked', student: 'Amara Johnson', triggeredBy: 'Mr. James Okafor', date: 'Today, 11:24 AM', hash: '8f4c4bf21e2f47ba401040404c4b784c4b784c4b784c4b', status: 'VERIFIED' },
 ];
 
-    { recordId: 'rec-88221' },
-    { recordId: 'rec-88222' },
-  ];
+
 export default function AdminAuditClient({ params }: { params: { recordId: string } }) {
   const [isVerifying, setIsVerifying] = React.useState(false);
   const [isVerified, setIsVerified] = React.useState(false);
