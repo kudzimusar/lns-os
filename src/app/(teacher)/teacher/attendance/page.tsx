@@ -16,6 +16,7 @@ import {
   Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const students = [
   { id: "1", name: "Abraham Lincoln", avatar: "AL", qrStatus: "scanned", status: "P", engagement: "L4", comment: "" },
@@ -97,7 +98,9 @@ export default function AttendancePage() {
                       <div className="w-9 h-9 rounded-lg bg-lns-light-grey flex items-center justify-center text-lns-navy text-xs font-bold shrink-0">
                         {student.avatar}
                       </div>
-                      <span className="text-sm font-bold text-lns-navy whitespace-nowrap">{student.name}</span>
+                      <Link href={`/teacher/students/${student.id}`} className="text-sm font-bold text-lns-navy whitespace-nowrap hover:text-lns-red cursor-pointer transition-colors">
+                        {student.name}
+                      </Link>
                     </div>
                   </td>
                   <td className="px-6 py-4">

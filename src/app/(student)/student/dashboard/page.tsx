@@ -36,9 +36,11 @@ export default function StudentDashboard() {
                   <p className="text-sm sm:text-lg font-bold">End of Term Assessment Schedule has been published.</p>
                </div>
             </div>
-            <Button variant="outline" size="sm" className="border-white/20 text-white hover:bg-white/10 text-[10px] font-black uppercase tracking-widest px-6 h-12 rounded-xl">
-               Execute Read Node
-            </Button>
+            <Link href="/student/messages">
+              <Button variant="outline" size="sm" className="border-white/20 text-white hover:bg-white/10 text-[10px] font-black uppercase tracking-widest px-6 h-12 rounded-xl">
+                 Execute Read Node
+              </Button>
+            </Link>
          </div>
          <Activity className="absolute -bottom-10 -right-10 text-white/5 w-64 h-64" />
       </Card>
@@ -75,9 +77,11 @@ export default function StudentDashboard() {
                      <p className="text-[10px] font-bold text-white/80 uppercase">Elite Institutional Peer Rank</p>
                   </div>
                   <div className="pt-2">
-                     <Button className="h-8 bg-white/20 hover:bg-white/30 text-white rounded-lg px-4 text-[9px] font-black uppercase tracking-widest border border-white/30 backdrop-blur-md">
-                        View Criterion Details
-                     </Button>
+                     <Link href="/student/grades">
+                        <Button className="h-8 bg-white/20 hover:bg-white/30 text-white rounded-lg px-4 text-[9px] font-black uppercase tracking-widest border border-white/30 backdrop-blur-md">
+                           View Criterion Details
+                        </Button>
+                     </Link>
                   </div>
                </div>
                <Star className="absolute -bottom-4 -right-4 text-white/10 group-hover:scale-110 transition-transform" size={140} />

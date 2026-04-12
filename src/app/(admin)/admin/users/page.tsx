@@ -21,12 +21,13 @@ import {
   Loader2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const usersData = [
-  { id: "1", name: "Sarah Jenkins", role: "Admin/Teacher", status: "Active", device: "Verified", email: "s.jenkins@lns.edu" },
-  { id: "2", name: "Michael Scott", role: "Teacher", status: "Active", device: "Unlinked", email: "m.scott@lns.edu" },
-  { id: "3", name: "Thomas Lincoln", role: "Parent", status: "Active", device: "Verified", email: "t.lincoln@gmail.com" },
-  { id: "4", name: "Abraham Lincoln", role: "Student", status: "Active", device: "Linked", email: "a.lincoln@student.lns.edu" },
+  { id: "1", name: "Sarah Jenkins", role: "Admin/Teacher", status: "Active", device: "Verified", email: "s.jenkins@lns.edu", studentId: null },
+  { id: "2", name: "Michael Scott", role: "Teacher", status: "Active", device: "Unlinked", email: "m.scott@lns.edu", studentId: null },
+  { id: "3", name: "Thomas Lincoln", role: "Parent", status: "Active", device: "Verified", email: "t.lincoln@gmail.com", studentId: null },
+  { id: "4", name: "Abraham Lincoln", role: "Student", status: "Active", device: "Linked", email: "a.lincoln@student.lns.edu", studentId: "1024" },
 ];
 
 export default function UserManagementPage() {
@@ -162,7 +163,13 @@ export default function UserManagementPage() {
                          {user.name.split(' ').map(n => n[0]).join('')}
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-lns-navy">{user.name}</p>
+                        {user.studentId ? (
+                          <Link href={`/teacher/students/${user.studentId}`} className="text-sm font-bold text-lns-navy hover:text-lns-red cursor-pointer transition-colors">
+                            {user.name}
+                          </Link>
+                        ) : (
+                          <p className="text-sm font-bold text-lns-navy">{user.name}</p>
+                        )}
                         <p className="text-[10px] text-lns-mid-grey font-bold uppercase">{user.email}</p>
                       </div>
                     </div>
