@@ -245,7 +245,7 @@ export default function TeacherTripDetailClient({ params }: { params: { id: stri
                   </div>
                   <AlertCircle size={32} className="text-lns-red opacity-40 shrink-0" />
                </div>
-            </CardContent>
+            </Card>
             <Card className="border border-dashed border-lns-border bg-lns-light-grey/30 flex flex-col items-center justify-center p-8 text-center grayscale opacity-80 decoration-none">
                 <ShieldCheck size={32} className="text-lns-navy/20 mb-4" />
                 <h4 className="text-xs font-black uppercase tracking-widest text-lns-navy mb-1 tracking-widest">Safety Record Registry</h4>
