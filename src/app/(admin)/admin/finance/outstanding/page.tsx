@@ -23,7 +23,8 @@ import {
   Zap,
   CheckCircle2,
   Phone,
-  ArrowRight
+  ArrowRight,
+  ShieldCheck
 } from "lucide-react";
 
 const outstandingRecords = [
