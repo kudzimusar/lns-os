@@ -17,6 +17,7 @@ import {
   MonitorDot
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/Button";
 
 const navItems = [
   { label: "Performance Hub", href: "/corporate/dashboard", icon: BarChart3 },
@@ -97,5 +98,3 @@ export default function CorporateLayout({ children }: { children: React.ReactNod
     </div>
   );
 }
-
-import { Button } from "@/components/ui/Button";

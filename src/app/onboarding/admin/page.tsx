@@ -273,7 +273,7 @@ export default function AdminOnboarding() {
                  <Button 
                    onClick={nextStep} 
                    className="bg-lns-navy text-white px-12 h-14 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-lns-navy/20"
-                 >
+                >
                     Next Phase: {steps[currentStep]} <ChevronRight size={20} className="ml-2" />
                  </Button>
                ) : null}
@@ -283,4 +283,3 @@ export default function AdminOnboarding() {
     </main>
   );
 }
-
