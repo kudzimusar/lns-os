@@ -28,6 +28,7 @@ const adminSidebarItems: SidebarItem[] = [
   { name: "Approvals", icon: BrainCircuit, href: "/admin/approvals", section: "1" },
   
   { name: "Data Insights", icon: BarChart3, href: "/admin/analytics", section: "2" },
+  { name: "Finance", icon: FileText, href: "/admin/finance", section: "2" },
   { name: "Audit Trail", icon: ShieldAlert, href: "/admin/audit", section: "2" },
   
   { name: "School Settings", icon: Settings, href: "/admin/settings", section: "3" },

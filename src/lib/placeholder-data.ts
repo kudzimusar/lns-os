@@ -1,12 +1,12 @@
 // src/lib/placeholder-data.ts
 
 export const PLACEHOLDER_STUDENTS = [
-  { id: 'student-001', name: 'Amara Johnson', class: 'Grade 7A', idNumber: 'LNS-2026-001', citizenship: 'PLATINUM', powerScore: 94.2, attendance: '98%', status: 'Good' },
-  { id: 'student-002', name: 'Blake Nkosi', class: 'Grade 7A', idNumber: 'LNS-2026-002', citizenship: 'GOLD', powerScore: 88.5, attendance: '96%', status: 'Good' },
-  { id: 'student-003', name: 'Cara Mensah', class: 'Grade 7B', idNumber: 'LNS-2026-003', citizenship: 'SILVER', powerScore: 76.1, attendance: '92%', status: 'Caution' },
-  { id: 'student-004', name: 'David Moyo', class: 'Grade 8A', idNumber: 'LNS-2026-004', citizenship: 'BRONZE', powerScore: 65.4, attendance: '88%', status: 'At Risk' },
-  { id: 'student-005', name: 'Elena Petrov', class: 'Grade 8A', idNumber: 'LNS-2026-005', citizenship: 'GOLD', powerScore: 89.9, attendance: '97%', status: 'Good' },
-  { id: 'student-006', name: 'Fatima Al-Rashid', class: 'Grade 8B', idNumber: 'LNS-2026-006', citizenship: 'PLATINUM', powerScore: 92.3, attendance: '99%', status: 'Good' },
+  { id: 'student-001', name: 'Amara Johnson', class: 'Grade 7A', idNumber: 'LNS-2026-001', citizenship: 'PLATINUM', powerScore: 94.2, attendance: '98%', status: 'Good', grade: 7, age: 13 },
+  { id: 'student-002', name: 'Blake Nkosi', class: 'Grade 7A', idNumber: 'LNS-2026-002', citizenship: 'GOLD', powerScore: 88.5, attendance: '96%', status: 'Good', grade: 7, age: 13 },
+  { id: 'student-003', name: 'Cara Mensah', class: 'Grade 7B', idNumber: 'LNS-2026-003', citizenship: 'SILVER', powerScore: 76.1, attendance: '92%', status: 'Caution', grade: 7, age: 13 },
+  { id: 'student-004', name: 'David Moyo', class: 'Grade 8A', idNumber: 'LNS-2026-004', citizenship: 'BRONZE', powerScore: 65.4, attendance: '88%', status: 'At Risk', grade: 8, age: 14 },
+  { id: 'student-005', name: 'Elena Petrov', class: 'Grade 8A', idNumber: 'LNS-2026-005', citizenship: 'GOLD', powerScore: 89.9, attendance: '97%', status: 'Good', grade: 8, age: 14 },
+  { id: 'student-006', name: 'Fatima Al-Rashid', class: 'Grade 8B', idNumber: 'LNS-2026-006', citizenship: 'PLATINUM', powerScore: 92.3, attendance: '99%', status: 'Good', grade: 8, age: 14 },
 ];
 
 export const PLACEHOLDER_TEACHERS = [

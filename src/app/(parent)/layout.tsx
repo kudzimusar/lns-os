@@ -15,7 +15,8 @@ import {
   Home,
   CalendarCheck,
   Bell,
-  FileText
+  FileText,
+  CreditCard
 } from "lucide-react";
 import { TopBar } from "@/components/layout/TopBar";
 import { BottomNav } from "@/components/mobile/BottomNav";
@@ -29,6 +30,7 @@ const parentSidebarItems: SidebarItem[] = [
   { name: "Attendance", icon: CalendarCheck, href: "/parent/attendance", section: "1" },
   { name: "Grades", icon: GraduationCap, href: "/parent/grades", section: "1" },
   
+  { name: "Payments", icon: CreditCard, href: "/parent/payments", section: "2" },
   { name: "Messages", icon: MessageSquare, href: "/parent/messages", section: "2" },
   { name: "Announcements", icon: Bell, href: "/parent/announcements", section: "2" },
   
