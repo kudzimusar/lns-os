@@ -16,6 +16,7 @@ import {
   Download,
   QrCode,
   Printer,
+  Zap,
   X,
   Loader2
 } from "lucide-react";
