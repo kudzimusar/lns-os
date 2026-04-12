@@ -47,7 +47,7 @@ export default function StudentOnboarding() {
                <h2 className="text-xl md:text-2xl font-black text-lns-navy uppercase tracking-tight">Identity Token</h2>
                <div className="flex flex-col items-center space-y-6">
                   <div className="w-24 h-24 md:w-28 md:h-28 rounded-3xl md:rounded-2xl bg-lns-light-grey flex items-center justify-center border-3 md:border-4 border-dashed border-lns-border group hover:border-lns-red transition-all cursor-pointer relative overflow-hidden">
-                     <Upload size={28} md:size={32} className="text-lns-mid-grey group-hover:text-lns-red" />
+                     <Upload size={32} className="text-lns-mid-grey group-hover:text-lns-red" />
                   </div>
                   <p className="text-[10px] font-black uppercase tracking-widest text-lns-mid-grey">Upload Your Institutional Photo</p>
                   <Button onClick={() => setCurrentStep(3)} className="w-full h-14 md:h-16 bg-lns-navy text-white rounded-xl md:rounded-2xl font-black uppercase tracking-widest text-[10px] active:scale-95 transition-all">Generate QR Card</Button>
@@ -63,9 +63,9 @@ export default function StudentOnboarding() {
                </div>
                
                <div className="p-8 md:p-12 bg-white rounded-3xl md:rounded-[3rem] shadow-2xl relative inline-block group">
-                  <QrCode size={120} md:size={180} className="text-lns-navy" />
+                  <QrCode size={180} className="text-lns-navy" />
                   <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 bg-lns-red text-white p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-xl rotate-12 transition-transform group-hover:rotate-6">
-                     <ShieldCheck size={24} md:size={32} />
+                     <ShieldCheck size={32} />
                   </div>
                   <div className="mt-6 md:mt-8 border-t border-lns-border/10 pt-4 md:pt-6 text-center">
                      <p className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-lns-mid-grey">LNS-ID-2026-0042</p>
@@ -88,7 +88,7 @@ export default function StudentOnboarding() {
                   ].map(t => (
                      <div key={t.label} className="p-4 md:p-6 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl flex items-center space-x-4 md:space-x-6 text-left hover:bg-white/10 transition-all cursor-pointer group active:scale-[0.98]">
                         <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-xl md:rounded-2xl flex items-center justify-center text-lns-navy shrink-0 shadow-xl group-hover:bg-lns-navy group-hover:text-white transition-all">
-                           <t.icon size={20} md:size={24} />
+                           <t.icon size={24} />
                         </div>
                         <div>
                            <h4 className="text-xs md:text-sm font-black text-white uppercase tracking-tight">{t.label}</h4>

@@ -33,15 +33,15 @@ export default function StudentQRCodePage() {
       {/* Verification Stats */}
       <div className="flex items-center gap-8 md:gap-12 text-white/60 z-10">
          <div className="flex flex-col items-center gap-2">
-            <ShieldCheck size={20} md:size={24} className="text-green-400" />
+            <ShieldCheck size={24} className="text-green-400" />
             <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Verified</span>
          </div>
          <div className="flex flex-col items-center gap-2">
-            <Download size={20} md:size={24} className="text-slate-400 cursor-pointer active:text-white transition-colors" />
+            <Download size={24} className="text-slate-400 cursor-pointer active:text-white transition-colors" />
             <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Offline</span>
          </div>
          <div className="flex flex-col items-center gap-2">
-            <Share2 size={20} md:size={24} className="text-slate-400 cursor-pointer active:text-white transition-colors" />
+            <Share2 size={24} className="text-slate-400 cursor-pointer active:text-white transition-colors" />
             <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">Export</span>
          </div>
       </div>

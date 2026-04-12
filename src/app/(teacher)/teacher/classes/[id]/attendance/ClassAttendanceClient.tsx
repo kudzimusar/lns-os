@@ -192,4 +192,3 @@ export default function ClassAttendanceClient({ params }: { params: { id: string
     </div>
   );
 }
-import Link from 'next/link';

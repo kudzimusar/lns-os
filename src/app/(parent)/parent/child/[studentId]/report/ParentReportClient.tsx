@@ -260,7 +260,7 @@ export default function ParentReportClient({ params }: { params: { studentId: st
          {!isSigned ? (
            <Card className="p-6 md:p-10 border-none shadow-2xl bg-lns-navy text-white rounded-2xl md:rounded-2xl space-y-6 md:space-y-8 flex flex-col md:flex-row items-center gap-6 md:gap-10 animate-in slide-in-from-bottom-8 duration-1000">
               <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/10 flex items-center justify-center text-white shadow-inner shrink-0">
-                 <ScanEye size={32} md:size={48} />
+                 <ScanEye size={48} />
               </div>
               <div className="flex-1 space-y-2 text-center md:text-left">
                  <h3 className="text-lg md:text-2xl font-black tracking-tight italic uppercase">Acknowledgement Required</h3>
@@ -272,7 +272,7 @@ export default function ParentReportClient({ params }: { params: { studentId: st
            </Card>
          ) : (
            <Card className="p-5 md:p-8 border-none shadow-xl bg-green-500 text-white rounded-2xl md:rounded-2xl flex items-center gap-4 md:gap-6 animate-in zoom-in duration-500">
-              <CheckCircle2 size={24} md:size={32} />
+              <CheckCircle2 size={32} />
               <div className="space-y-0.5">
                  <h3 className="text-base md:text-lg font-black uppercase italic tracking-tight leading-none">Record Synchronized</h3>
                  <p className="text-[10px] md:text-xs font-bold text-white/80">Digital signature logged: April 12, 11:57 AM</p>
