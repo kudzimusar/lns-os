@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import TeacherMessagesPage from "../page";
 import { MESSAGE_THREADS } from "@/lib/placeholder-data";
