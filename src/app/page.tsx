@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent } from "@/components/ui/Card";
-import { FloatingInput } from "@/components/ui/FloatingInput";
+import { Input } from "@/components/ui/Input";
 import { QrCode, Mail, ArrowRight } from "lucide-react";
 
 export default function LoginPage() {
@@ -59,8 +59,8 @@ export default function LoginPage() {
 
             {loginMode === "email" ? (
               <div className="space-y-6">
-                <FloatingInput label="Email Address" type="email" id="email" />
-                <FloatingInput label="Password" type="password" id="password" />
+                <Input label="Email Address" type="email" id="email" placeholder="name@school.com" />
+                <Input label="Password" type="password" id="password" placeholder="••••••••" />
                 
                 <div className="flex items-center justify-between text-[11px] font-bold">
                   <button className="text-lns-navy hover:text-lns-red transition-colors">
@@ -78,7 +78,7 @@ export default function LoginPage() {
               </div>
             ) : (
               <div className="space-y-6 text-center pb-4">
-                <div className="aspect-square bg-lns-light-grey rounded-[2.5rem] flex items-center justify-center border-2 border-dashed border-lns-border group hover:border-lns-red transition-all cursor-pointer">
+                <div className="aspect-square bg-lns-light-grey rounded-2xl flex items-center justify-center border-2 border-dashed border-lns-border group hover:border-lns-red transition-all cursor-pointer">
                   <div className="space-y-3 text-lns-mid-grey group-hover:text-lns-navy transition-all transform group-hover:scale-110">
                     <QrCode size={80} className="mx-auto" />
                     <p className="text-xs font-[800] uppercase tracking-widest">Open Camera</p>

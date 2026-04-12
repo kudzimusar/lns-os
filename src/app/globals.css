@@ -139,6 +139,38 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Global Typography Enforcement - TABLET DESIGN SYSTEM SECTION 5 */
+@layer base {
+  h1 {
+    @apply text-xl md:text-[24px] font-black tracking-tighter uppercase leading-tight;
+  }
+  h2 {
+    @apply text-lg md:text-[18px] font-black tracking-tight uppercase;
+  }
+  h3 {
+    @apply text-base md:text-[16px] font-bold tracking-normal uppercase;
+  }
+  
+  body {
+    @apply text-[14px] md:text-[15px] leading-relaxed;
+  }
+
+  /* Accessibility & Touch Target Enforcement */
+  button, a {
+    @apply active:scale-95 transition-transform;
+  }
+}
+
+@layer utilities {
+  .max-w-tablet {
+    @apply max-w-3xl mx-auto;
+  }
+  
+  .h-touch {
+    @apply h-12 md:h-12;
+  }
+}
+
 /* Global Utilities */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

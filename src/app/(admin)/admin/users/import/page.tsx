@@ -137,7 +137,7 @@ export default function BulkImportPage() {
                </div>
             </div>
 
-            <Card className="border-none shadow-xl bg-white overflow-hidden rounded-[2.5rem]">
+            <Card className="border-none shadow-xl bg-white overflow-hidden rounded-2xl">
                <div className="overflow-x-auto">
                   <table className="w-full text-left">
                      <thead>

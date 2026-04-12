@@ -27,17 +27,17 @@ const performanceHistory = [
 
 export default function AdminDashboard() {
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-8 px-0">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-1">
         <div>
-          <h1 className="text-3xl font-[800] text-lns-navy tracking-tight">System Oversight</h1>
-          <p className="text-lns-mid-grey font-medium">Lennon Nash High School Administrative Node</p>
+          <h1 className="text-xl md:text-3xl font-[800] text-lns-navy tracking-tight uppercase">System Oversight</h1>
+          <p className="text-xs md:text-base text-lns-mid-grey font-medium">Lennon Nash High School Administrative Node</p>
         </div>
-        <div className="flex items-center space-x-3">
-          <Button variant="outline" size="sm" className="bg-white">
+        <div className="flex items-center space-x-3 w-full sm:w-auto">
+          <Button variant="outline" className="flex-1 sm:flex-none bg-white h-11 md:h-12 text-[10px] font-black uppercase tracking-widest rounded-xl">
             System Status
           </Button>
-          <Button size="sm">
+          <Button className="flex-1 sm:flex-none h-11 md:h-12 text-[10px] font-black uppercase tracking-widest rounded-xl">
             Configuration
           </Button>
         </div>

@@ -182,7 +182,7 @@ export default function AdminOnboarding() {
                </div>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <Card className="border-2 border-dashed border-lns-border bg-white p-12 flex flex-col items-center justify-center text-center space-y-6 hover:border-lns-red transition-all cursor-pointer group">
-                     <div className="w-20 h-20 bg-lns-light-grey rounded-[2.5rem] flex items-center justify-center text-lns-mid-grey group-hover:bg-lns-red group-hover:text-white transition-all">
+                     <div className="w-20 h-20 bg-lns-light-grey rounded-2xl flex items-center justify-center text-lns-mid-grey group-hover:bg-lns-red group-hover:text-white transition-all">
                         <Upload size={32} />
                      </div>
                      <div className="space-y-2">
@@ -245,7 +245,7 @@ export default function AdminOnboarding() {
                      </Button>
                   </Card>
                </div>
-               <div className="p-8 bg-green-50 rounded-[2.5rem] border border-green-200 flex flex-col items-center space-y-4 text-center">
+               <div className="p-8 bg-green-50 rounded-2xl border border-green-200 flex flex-col items-center space-y-4 text-center">
                   <Zap className="text-green-600" size={32} />
                   <h3 className="text-xl font-black text-green-950 uppercase tracking-tight">Onboarding Complete</h3>
                   <p className="text-sm text-green-800 font-medium px-12">All institution nodes have been successfully synchronized to the LNS blockchain ledger. Your school is now active.</p>

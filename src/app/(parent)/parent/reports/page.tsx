@@ -90,7 +90,7 @@ export default function parentReports() {
                <BarChart3 size={180} className="absolute -bottom-10 -right-10 text-white/5" />
             </Card>
 
-            <div className="p-8 bg-lns-light-grey rounded-[2.5rem] border border-lns-border/30 space-y-4">
+            <div className="p-8 bg-lns-light-grey rounded-2xl border border-lns-border/30 space-y-4">
                 <div className="flex items-center space-x-3 text-lns-navy">
                    <BookOpen size={20} />
                    <h4 className="text-sm font-black uppercase">MYP Grading Hub</h4>

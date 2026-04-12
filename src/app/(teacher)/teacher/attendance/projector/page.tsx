@@ -70,7 +70,7 @@ export default function ProjectorQRView() {
 
          {/* Connection Status & Verification Dashboard */}
          <div className="space-y-8">
-            <div className="p-8 bg-white/5 border border-white/10 rounded-[2.5rem] space-y-6">
+            <div className="p-8 bg-white/5 border border-white/10 rounded-2xl space-y-6">
                <h3 className="text-xl font-black text-white uppercase tracking-tight flex items-center">
                   <ShieldCheck className="mr-3 text-green-500" size={24} />
                   Triple-Verify Active

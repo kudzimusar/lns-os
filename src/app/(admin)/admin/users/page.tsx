@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Input } from "@/components/ui/Input";
 
 const usersData = [
   { id: "1", name: "Sarah Jenkins", role: "Admin/Teacher", status: "Active", device: "Verified", email: "s.jenkins@lns.edu", studentId: null },
@@ -51,11 +52,11 @@ export default function UserManagementPage() {
           <p className="text-lns-mid-grey font-medium">Control roles, access permissions and device linking.</p>
         </div>
         <div className="flex items-center space-x-3">
-          <Button variant="outline" className="bg-white">
+          <Button variant="outline" className="bg-white px-6">
             <Download size={18} className="mr-2" />
-            Bulk CSV Import
+            Bulk Import
           </Button>
-          <Button onClick={() => { setShowEnroll(true); setEnrollStep(1); }}>
+          <Button onClick={() => { setShowEnroll(true); setEnrollStep(1); }} className="px-6">
             <UserPlus size={18} className="mr-2" />
             Enroll User
           </Button>
@@ -64,26 +65,20 @@ export default function UserManagementPage() {
 
       {/* Enrollment Modal Shell */}
       {showEnroll && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-lns-navy/80 backdrop-blur-md animate-in fade-in duration-300">
-          <Card className="w-full max-w-lg border-none shadow-2xl bg-white rounded-[2.5rem] overflow-hidden">
-             <div className="p-8 border-b border-lns-border flex items-center justify-between">
-                <h3 className="text-xl font-black text-lns-navy uppercase tracking-tight">Enrollment Node</h3>
+        <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-6 bg-lns-navy/80 backdrop-blur-md animate-in fade-in duration-300">
+          <Card className="w-full max-w-lg border-none shadow-2xl bg-white rounded-t-[2.5rem] sm:rounded-2xl overflow-hidden">
+             <div className="p-6 sm:p-8 border-b border-lns-border flex items-center justify-between">
+                <h3 className="text-lg sm:text-xl font-black text-lns-navy uppercase tracking-tight">Enrollment Node</h3>
                 <Button variant="ghost" size="icon" onClick={() => setShowEnroll(false)} className="rounded-full">
                    <X size={20} />
                 </Button>
              </div>
-             <CardContent className="p-8">
+             <CardContent className="p-6 sm:p-8">
                 {enrollStep === 1 ? (
                    <div className="space-y-6">
-                      <div className="grid grid-cols-2 gap-4">
-                         <div className="space-y-2">
-                            <label className="text-[10px] font-black uppercase text-lns-mid-grey">First Name</label>
-                            <input className="w-full bg-lns-light-grey rounded-xl border-none h-12 px-4 text-sm focus:ring-1 focus:ring-lns-navy" placeholder="e.g. John" />
-                         </div>
-                         <div className="space-y-2">
-                            <label className="text-[10px] font-black uppercase text-lns-mid-grey">Last Name</label>
-                            <input className="w-full bg-lns-light-grey rounded-xl border-none h-12 px-4 text-sm focus:ring-1 focus:ring-lns-navy" placeholder="e.g. Doe" />
-                         </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <Input label="First Name" id="firstName" placeholder="e.g. John" />
+                        <Input label="Last Name" id="lastName" placeholder="e.g. Doe" />
                       </div>
                       <div className="space-y-2">
                          <label className="text-[10px] font-black uppercase text-lns-mid-grey">Role Profile</label>
@@ -133,17 +128,66 @@ export default function UserManagementPage() {
         <div className="p-4 border-b border-lns-border flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center bg-lns-light-grey rounded-xl px-4 w-full max-w-sm">
             <Search className="text-lns-mid-grey" size={16} />
-            <input type="text" placeholder="Search by name, email or role..." className="bg-transparent border-none focus:ring-0 text-sm px-3 py-2.5 w-full" />
+            <input type="text" placeholder="Search users..." className="bg-transparent border-none focus:ring-0 text-sm px-3 py-2.5 w-full" />
           </div>
           <div className="flex items-center space-x-2">
-            <Button variant="outline" size="sm" className="h-10 text-xs font-bold px-4">
+            <Button variant="outline" size="sm" className="h-10 text-xs font-bold px-4 flex-1 sm:flex-none">
               <Filter size={14} className="mr-2" />
-              Filter: All Roles
+              Filter
+            </Button>
+            <Button variant="outline" size="sm" className="h-10 text-xs font-bold px-4 flex-1 sm:flex-none">
+              Export
             </Button>
           </div>
         </div>
 
-        <div className="overflow-x-auto">
+        {/* Mobile: Card List */}
+        <div className="md:hidden divide-y divide-lns-border">
+          {usersData.map((user) => (
+            <div key={user.id} className="p-4 space-y-4">
+              <div className="flex justify-between items-start">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-xl bg-lns-navy text-white flex items-center justify-center font-black text-xs shrink-0">
+                    {user.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-lns-navy">{user.name}</p>
+                    <p className="text-[10px] text-lns-mid-grey font-bold uppercase">{user.email}</p>
+                  </div>
+                </div>
+                <span className={cn(
+                  "text-[9px] font-black uppercase tracking-[0.1em] px-2 py-1 rounded-md",
+                  user.status === "Active" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+                )}>
+                  {user.status}
+                </span>
+              </div>
+              <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-lns-mid-grey">
+                <div className="flex flex-col gap-1">
+                  <span>Role: {user.role}</span>
+                  <div className={cn(
+                    "flex items-center space-x-1.5",
+                    user.device === "Verified" ? "text-green-600" : user.device === "Linked" ? "text-blue-600" : "text-lns-mid-grey"
+                  )}>
+                    <Smartphone size={12} />
+                    <span>{user.device}</span>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button size="icon" variant="outline" className="h-10 w-10 border-lns-border rounded-xl">
+                    <QrCode size={18} />
+                  </Button>
+                  <Button size="icon" variant="outline" className="h-10 w-10 border-lns-border rounded-xl">
+                    <MoreVertical size={18} />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: Table */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left">
             <thead>
               <tr className="border-b border-lns-border bg-lns-light-grey/50">

@@ -1,193 +1,183 @@
 "use client";
 
-import React, { useState } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
+import React from "react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { 
-  Users, 
-  ChevronDown, 
-  Bell, 
-  TrendingUp, 
-  Calendar, 
-  Award,
-  ShieldCheck,
-  Megaphone,
-  User,
-  Star,
   ChevronRight,
-  ShieldAlert,
+  GraduationCap,
+  Bell,
   Activity,
-  FileText
+  User,
+  TrendingUp,
+  Megaphone,
+  ShieldCheck,
+  Award,
+  ExternalLink,
+  QrCode
 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-
-const children = [
-  { id: 1, name: "Alex Lincoln", grade: "10A", powerScore: 88.2, attendance: "98%", status: "Good", citizenship: "Platinum" },
-  { id: 2, name: "Mary Lincoln", grade: "8C", powerScore: 74.5, attendance: "94%", status: "At Risk", citizenship: "Gold" },
-];
+import { SealedBadge } from "@/components/blockchain/SealedBadge";
+import { generateMockHash } from "@/lib/blockchain";
+import { 
+  TabletPage, 
+  TabletHeader, 
+  TabletSection 
+} from "@/components/tablet/TabletPage";
+import { PLACEHOLDER_STUDENTS, PARENT_CHILDREN } from "@/lib/placeholder-data";
 
 export default function ParentDashboard() {
-  const [selectedChild, setSelectedChild] = useState(children[0]);
+  // Get children for current parent (mocked to parent-001)
+  const childrenIds = PARENT_CHILDREN[0].childrenIds;
+  const myChildren = PLACEHOLDER_STUDENTS.filter(s => childrenIds.includes(s.id));
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-20">
-      {/* Role Announcement Hub */}
-      <Card className="border-none shadow-xl bg-[#FFFBF0] border border-amber-100 p-6 rounded-[2rem] overflow-hidden relative">
-         <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            <div className="flex items-center space-x-6">
-               <div className="bg-amber-500 p-4 rounded-2xl text-white shadow-lg shadow-amber-500/20">
-                  <Megaphone size={20} />
+    <TabletPage className="space-y-6 md:space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-20 px-4 md:px-0">
+      {/* Broadcast Banner - Section 13/21 Spec */}
+      <Card className="border-none shadow-xl bg-[#FFFBF0] border border-amber-100 p-6 md:p-10 rounded-2xl md:rounded-3xl overflow-hidden relative group">
+         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8 text-center md:text-left">
+            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+               <div className="bg-amber-500 p-4 md:p-5 rounded-2xl md:rounded-3xl text-white shadow-xl shadow-amber-500/20 group-hover:scale-110 transition-transform">
+                  <Megaphone size={32} />
                </div>
-               <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-700">Official Advisory</p>
-                  <p className="text-sm sm:text-lg font-bold text-amber-950">Term 1 Official Reports are now available for digital verification.</p>
+               <div className="space-y-1">
+                  <p className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-amber-700 italic">Institutional Advisory</p>
+                  <p className="text-xl md:text-3xl font-black text-amber-950 leading-tight uppercase tracking-tight">Progress Reports Awaiting Signature</p>
                </div>
             </div>
-            <Link href="/parent/reports">
-               <Button variant="ghost" className="text-amber-700 font-black text-[10px] tracking-widest bg-amber-100 px-8 h-12 rounded-xl border border-amber-200">
-                  Access Ledger <ChevronRight size={16} className="ml-1" />
+            <Link href="/parent/announcements" className="w-full md:w-auto">
+               <Button className="w-full md:w-auto bg-amber-950 text-white hover:bg-black font-black text-[10px] tracking-widest px-10 h-14 rounded-xl shadow-xl shadow-amber-950/20 active:scale-95 transition-all">
+                  Access Portal Center <ChevronRight size={18} className="ml-2" />
                </Button>
             </Link>
          </div>
-         <Activity className="absolute -bottom-10 -right-10 text-amber-500/5 w-64 h-64" />
+         <Activity className="absolute -bottom-20 -right-20 text-amber-500/5 w-96 h-96 pointer-events-none" />
       </Card>
 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-2">
-        <div>
-          <h1 className="text-3xl font-[900] text-lns-navy tracking-tight">Parent <span className="text-lns-red">Command</span></h1>
-          <p className="text-lns-mid-grey font-medium uppercase tracking-[0.2em] text-[10px]">Guardian Interface • Hub 02</p>
-        </div>
-        
-        <div className="flex items-center bg-white border border-lns-border rounded-2xl p-1 shadow-sm">
-           {children.map(child => (
-             <button 
-               key={child.id}
-               onClick={() => setSelectedChild(child)}
-               className={cn(
-                 "px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center space-x-2",
-                 selectedChild.id === child.id ? "bg-lns-navy text-white shadow-xl" : "text-lns-mid-grey hover:bg-lns-light-grey"
-               )}
-             >
-                <div className={cn("w-2 h-2 rounded-full", child.status === "Good" ? "bg-green-500" : "bg-lns-red")} />
-                <span>{child.name.split(' ')[0]}</span>
-             </button>
-           ))}
-        </div>
-      </div>
+      <TabletHeader 
+        title="Family Command" 
+        subtitle="Operational Overview for Guardian Nodes" 
+      />
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-         <div className="lg:col-span-2 space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-               <Card className="border-none shadow-sm bg-white p-6 relative overflow-hidden group">
-                  <TrendingUp className="text-lns-navy mb-4 relative z-10" size={20} />
-                  <p className="text-4xl font-[900] text-lns-navy relative z-10 tracking-tighter">{selectedChild.powerScore}</p>
-                  <p className="text-[10px] font-black uppercase text-lns-mid-grey tracking-widest relative z-10">Academic Power</p>
-                  <div className="absolute -bottom-4 -right-4 text-lns-light-grey/20 group-hover:scale-110 transition-transform">
-                     <TrendingUp size={100} />
-                  </div>
-               </Card>
-               <Card className="border-none shadow-sm bg-white p-6 relative overflow-hidden group">
-                  <ShieldCheck className="text-green-600 mb-4 relative z-10" size={20} />
-                  <p className="text-4xl font-[900] text-lns-navy relative z-10 tracking-tighter">{selectedChild.attendance}</p>
-                  <p className="text-[10px] font-black uppercase text-lns-mid-grey tracking-widest relative z-10">Attendance Hash</p>
-                  <div className="absolute -bottom-4 -right-4 text-green-500/5 group-hover:scale-110 transition-transform">
-                     <ShieldCheck size={100} />
-                  </div>
-               </Card>
-               <Card className={cn(
-                 "border-none shadow-xl p-6 relative overflow-hidden group transition-all",
-                 selectedChild.citizenship === "Platinum" ? "bg-gradient-to-br from-lns-navy to-slate-900 text-white" : "bg-gradient-to-br from-amber-400 to-amber-600 text-white"
-               )}>
-                  <Award className="mb-4 relative z-10" size={20} />
-                  <p className="text-3xl font-black relative z-10 tracking-tight italic uppercase">{selectedChild.citizenship}</p>
-                  <p className="text-[10px] font-bold text-white/60 uppercase tracking-widest relative z-10">LNS Peer Rank</p>
-                  <div className="absolute -bottom-4 -right-4 text-white/5 group-hover:scale-110 transition-transform">
-                     <Award size={100} />
-                  </div>
-               </Card>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+         {/* Children Grid - Takes 3 sectors on lg */}
+         <div className="lg:col-span-3 space-y-6">
+            <h3 className="text-[11px] font-black uppercase tracking-[0.3em] text-lns-navy px-2 flex items-center gap-2">
+               <User size={14} className="text-lns-red" /> Dependency Nodes
+            </h3>
+            <div className="grid grid-cols-1 gap-4">
+               {myChildren.map((child) => (
+                 <Link key={child.id} href={`/parent/child/${child.id}`}>
+                    <Card className="p-6 md:p-8 border-none shadow-xl bg-white rounded-2xl hover:translate-x-2 transition-transform group cursor-pointer border-l-4 md:border-l-8 border-transparent hover:border-lns-red">
+                       <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-6">
+                             <div className="w-16 h-16 rounded-2xl bg-lns-navy text-white text-2xl font-black shadow-xl group-hover:bg-lns-red transition-all shrink-0 flex items-center justify-center">
+                                {child.name.charAt(0)}
+                             </div>
+                             <div className="space-y-1 text-left">
+                                <h4 className="text-xl font-black text-lns-navy uppercase tracking-tight italic">{child.name}</h4>
+                                <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-lns-mid-grey italic">
+                                   <span className="bg-gray-50 px-2 py-1 rounded-lg border border-gray-100">{child.class}</span>
+                                   <span className="flex items-center gap-1"><TrendingUp size={12} className="text-lns-red"/> Score: {child.powerScore}%</span>
+                                </div>
+                             </div>
+                          </div>
+                          <ChevronRight className="text-gray-200 group-hover:text-lns-navy transition-colors shrink-0" size={24} />
+                       </div>
+                    </Card>
+                 </Link>
+               ))}
             </div>
+         </div>
 
-            <Card className="border-none shadow-sm bg-white overflow-hidden rounded-[2.5rem]">
-               <CardHeader className="border-b border-lns-border bg-lns-light-grey/20 px-8 py-5 flex flex-row items-center justify-between">
-                  <CardTitle className="text-xs uppercase tracking-[0.2em] font-black text-lns-navy">Verified behavioral timeline</CardTitle>
-                  <Link href="/parent/reports">
-                     <Button variant="ghost" className="text-[10px] font-black uppercase tracking-widest text-lns-red h-8">Download PDF Report</Button>
-                  </Link>
-               </CardHeader>
-               <CardContent className="p-0">
-                  <div className="divide-y divide-lns-border">
+         {/* Messenger Quick Link - Takes 2 sectors on lg */}
+         <div className="lg:col-span-2 space-y-6">
+            <h3 className="text-[11px] font-black uppercase tracking-[0.3em] text-lns-navy px-2 flex items-center gap-2">
+               <Bell size={14} className="text-lns-red" /> Secure Comms
+            </h3>
+            <Card className="p-8 border-none shadow-2xl bg-lns-navy text-white rounded-2xl h-full flex flex-col justify-between overflow-hidden relative min-h-[400px]">
+               <div className="relative z-10 space-y-8 flex-1">
+                  <div className="space-y-2 text-center md:text-left">
+                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Institutional Messaging</p>
+                     <h4 className="text-2xl font-black tracking-tight italic uppercase">Coordinate with Faculty</h4>
+                  </div>
+                  <div className="space-y-4">
                      {[
-                       { type: "Merit", points: "+5", reason: "Excellence in Algebra Assessment", date: "Today, 11:20 AM", icon: Star, color: "text-amber-500" },
-                       { type: "Notice", points: "-", reason: "Left Science book in Physics Lab", date: "Yesterday, 14:05", icon: Bell, color: "text-blue-500" },
-                       { type: "Report", points: "Released", reason: "Term 1 Final Academic Report Hub", date: "Yesterday, 09:00", icon: FileText, color: "text-lns-red" },
-                     ].map((item, idx) => (
-                       <div key={idx} className="p-6 flex items-start justify-between group hover:bg-lns-light-grey/30 transition-all cursor-pointer">
-                          <div className="flex items-start space-x-6">
-                             <div className={cn("w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-lg shrink-0 ring-4 ring-lns-light-grey", item.color)}>
-                                <item.icon size={20} />
-                             </div>
-                             <div>
-                                <p className="text-sm font-black text-lns-navy group-hover:text-lns-red transition-all">{item.reason}</p>
-                                <p className="text-[10px] text-lns-mid-grey font-black uppercase tracking-widest mt-1">{item.type} • {item.date}</p>
+                       { name: "Ms. Sarah Chen", role: "Head of English", unread: true },
+                       { name: "Academic Registrar", role: "System Node", unread: false },
+                     ].map((msg, i) => (
+                       <div key={i} className="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 group cursor-pointer active:bg-white/10 transition-colors">
+                          <div className="flex items-center gap-4">
+                             <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center font-black group-hover:bg-lns-red transition-all">{msg.name.charAt(0)}</div>
+                             <div className="text-left">
+                                <p className="text-sm font-black uppercase tracking-tight">{msg.name}</p>
+                                <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest italic">{msg.role}</p>
                              </div>
                           </div>
-                          <span className={cn("text-lg font-black", item.points.startsWith('+') ? "text-green-600" : "text-lns-navy")}>{item.points}</span>
+                          {msg.unread && <div className="w-2 h-2 bg-lns-red rounded-full shadow-[0_0_10px_rgba(214,43,43,1)] animate-pulse" />}
                        </div>
                      ))}
                   </div>
-               </CardContent>
+               </div>
+               <Link href="/parent/messages" className="relative z-10 pt-8 w-full">
+                  <Button className="w-full bg-white text-lns-navy hover:bg-black hover:text-white h-16 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all shadow-xl active:scale-95">
+                     Enter Comms Hub
+                  </Button>
+               </Link>
+               <Activity className="absolute -bottom-20 -right-20 text-white/5 w-80 h-80 pointer-events-none" />
             </Card>
          </div>
 
-         <div className="space-y-8">
-            <Card className="border-none shadow-xl bg-[#1A1F37] text-white p-10 rounded-[3.5rem] space-y-8 overflow-hidden relative">
-               <div className="relative z-10 space-y-6">
-                  <h3 className="text-xl font-black uppercase tracking-tight">Institutional Messenger</h3>
-                  <div className="space-y-3">
-                     {[
-                       { name: "Sarah Jenkins", role: "Head of English", unread: true },
-                       { name: "Academic Hub", role: "Automated", unread: false },
-                     ].map(msg => (
-                       <div key={msg.name} className="flex items-center justify-between p-4 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer group">
-                          <div className="flex items-center space-x-4">
-                             <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-[11px] font-black group-hover:bg-lns-red transition-all">{msg.name[0]}</div>
-                             <div>
-                                <p className="text-xs font-bold text-white">{msg.name}</p>
-                                <p className="text-[9px] text-slate-500 font-black uppercase tracking-widest">{msg.role}</p>
-                             </div>
-                          </div>
-                          {msg.unread && <div className="w-2 h-2 bg-lns-red rounded-full shadow-[0_0_10px_rgba(214,43,43,1)]" />}
-                       </div>
-                     ))}
+         {/* Achievement Passport - Section 12/21 */}
+         <div className="md:col-span-2 lg:col-span-5 space-y-6 mt-6">
+            <h3 className="text-[11px] font-black uppercase tracking-[0.3em] text-lns-navy px-2 flex items-center gap-2">
+               <ShieldCheck size={14} className="text-lns-red" /> Achievement Passport
+            </h3>
+            <Card className="p-8 md:p-12 border-none shadow-2xl bg-gradient-to-br from-[#0A1F44] to-[#162e5a] text-white rounded-3xl overflow-hidden relative">
+               <div className="relative z-10 flex flex-col md:flex-row gap-10 items-center">
+                  <div className="bg-white p-6 rounded-3xl shadow-2xl shadow-black/40 rotate-3 group-hover:rotate-0 transition-transform duration-500 shrink-0">
+                     <QrCode size={120} className="text-lns-navy" />
+                     <div className="mt-4 text-center">
+                        <p className="text-[8px] font-black text-lns-mid-grey">SECURE ID: family-001</p>
+                     </div>
                   </div>
-                  <Button className="w-full bg-white text-lns-navy hover:bg-lns-red hover:text-white h-14 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] shadow-2xl transition-all">New Encrypted Channel</Button>
-               </div>
-               <Activity className="absolute -bottom-10 -right-10 text-white/5 w-64 h-64 pointer-events-none" />
-            </Card>
+                  <div className="flex-1 text-center md:text-left space-y-6">
+                     <div className="space-y-4">
+                        <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-lns-red text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg shadow-lns-red/20">
+                           <ShieldCheck size={14} /> Polygon Anchored Verification
+                        </div>
+                        <h4 className="text-2xl md:text-4xl font-black italic tracking-tighter uppercase leading-tight">Student Educational Identity Ledger</h4>
+                        <p className="text-sm text-slate-400 font-medium max-w-2xl leading-relaxed uppercase tracking-tight">
+                           A verified, portable, lifelong record of institutional achievements. Owned by the student node, verifiable by peer institutions, expiring never.
+                        </p>
+                     </div>
+                     
+                     <div className="flex flex-wrap justify-center md:justify-start gap-4">
+                        <SealedBadge hash={generateMockHash()} className="bg-white/10 border-white/10 text-white" />
+                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] flex items-center gap-2">
+                           <Award size={14} className="text-amber-400" /> 12 Active Credentials
+                        </span>
+                     </div>
 
-            <Card className="border-none shadow-sm bg-white p-8 space-y-6 rounded-[2.5rem]">
-               <div className="flex items-center space-x-3 text-lns-navy border-b border-lns-border pb-4">
-                  <Calendar size={20} />
-                  <h4 className="text-xs font-black uppercase tracking-widest">School Timeline</h4>
+                     <div className="pt-4 flex flex-col sm:flex-row gap-4">
+                        <Link href={`/verify/passport/${generateMockHash()}`} className="w-full sm:w-auto">
+                           <Button className="w-full sm:w-auto bg-white text-lns-navy hover:bg-lns-red hover:text-white h-14 px-10 rounded-xl font-black uppercase text-[10px] tracking-widest transition-all active:scale-95 shadow-2xl shadow-black/20">
+                              View Passport <ExternalLink size={16} className="ml-3" />
+                           </Button>
+                        </Link>
+                        <Button variant="ghost" className="text-slate-400 hover:text-white hover:bg-white/5 font-black uppercase text-[10px] tracking-widest px-8">
+                           Download PDF Archive
+                        </Button>
+                     </div>
+                  </div>
                </div>
-               <div className="space-y-4">
-                  {[
-                    { event: "Parent-Teacher Council", date: "April 18", time: "18:00" },
-                    { event: "Mid-Term Assessment Hub", date: "April 24", time: "09:00" },
-                  ].map(e => (
-                    <div key={e.event} className="group cursor-pointer">
-                       <p className="text-[10px] font-black text-lns-mid-grey uppercase tracking-widest mb-1">{e.date} • {e.time}</p>
-                       <p className="text-sm font-bold text-lns-navy group-hover:text-lns-red transition-all">{e.event}</p>
-                    </div>
-                  ))}
+               <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+                  <ShieldCheck size={300} />
                </div>
-               <Link href="/calendar" className="block">
-                  <Button variant="ghost" className="w-full h-12 bg-lns-light-grey text-lns-mid-grey hover:text-lns-navy rounded-xl text-[10px] font-black uppercase tracking-widest">Full Institutional Calendar</Button>
-               </Link>
             </Card>
          </div>
       </div>
-    </div>
+    </TabletPage>
   );
 }

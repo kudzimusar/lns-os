@@ -43,7 +43,7 @@ export default function AssignmentClient({ id }: { id: string }) {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Card className="border-none shadow-sm bg-blue-50">
               <CardContent className="p-4">
                 <p className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-1">Submissions</p>
@@ -75,7 +75,42 @@ export default function AssignmentClient({ id }: { id: string }) {
 
           <Card className="border-none shadow-sm">
             <CardContent className="p-0">
-              <div className="overflow-x-auto">
+              {/* Mobile View: Cards */}
+              <div className="md:hidden divide-y divide-lns-border">
+                {students.map((student) => (
+                  <div key={student.id} className="p-4 space-y-3">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 rounded-xl bg-lns-navy/10 flex items-center justify-center text-lns-navy font-bold text-xs shrink-0">
+                          {student.name.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-lns-navy">{student.name}</p>
+                          <p className="text-[10px] text-lns-mid-grey font-medium">{student.id}</p>
+                        </div>
+                      </div>
+                      <span className={cn(
+                        "px-2 py-0.5 rounded-full text-[9px] font-[800] uppercase tracking-tighter",
+                        student.status === "Marked" ? "bg-green-100 text-green-700" :
+                        student.status === "Pending" ? "bg-blue-100 text-blue-700" :
+                        "bg-red-100 text-red-700"
+                      )}>
+                        {student.status}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center text-xs">
+                      <div className="flex gap-4 text-lns-mid-grey">
+                        <span>Submitted: {student.date}</span>
+                        <span className="font-bold text-lns-navy">Score: {student.score}%</span>
+                      </div>
+                      <Button variant="outline" size="sm" className="h-8 text-[10px] font-black uppercase px-4 rounded-lg">Mark</Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop View: Table */}
+              <div className="hidden md:block overflow-x-auto">
                 <table className="w-full text-left">
                   <thead>
                     <tr className="border-b border-lns-border bg-lns-light-grey/50">

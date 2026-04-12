@@ -65,7 +65,7 @@ export default function TeacherOnboarding() {
           <Card className="border-none shadow-2xl bg-white rounded-[3rem] overflow-hidden p-12 space-y-8">
              <h2 className="text-2xl font-black text-lns-navy uppercase tracking-tight text-center">Complete Your ID</h2>
              <div className="flex flex-col items-center space-y-6">
-                <div className="w-24 h-24 rounded-[2.5rem] bg-lns-light-grey flex items-center justify-center border-2 border-dashed border-lns-border group hover:border-lns-red transition-all cursor-pointer relative">
+                <div className="w-24 h-24 rounded-2xl bg-lns-light-grey flex items-center justify-center border-2 border-dashed border-lns-border group hover:border-lns-red transition-all cursor-pointer relative">
                    <Upload className="text-lns-mid-grey group-hover:text-lns-red" />
                    <div className="absolute -bottom-2 -right-2 bg-lns-red text-white p-2 rounded-xl shadow-lg">
                       <PlusIcon size={14} />

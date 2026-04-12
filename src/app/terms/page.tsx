@@ -60,7 +60,7 @@ export default function TermsOfService() {
               </p>
            </section>
 
-           <div className="flex items-center justify-between p-8 bg-white border border-lns-border rounded-[2.5rem] shadow-sm">
+           <div className="flex items-center justify-between p-8 bg-white border border-lns-border rounded-2xl shadow-sm">
               <div className="flex items-center space-x-3">
                  <FileCheck className="text-green-600" size={24} />
                  <span className="text-sm font-black text-lns-navy">Institutional Compliance Verified</span>

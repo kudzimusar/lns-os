@@ -131,7 +131,7 @@ export default function DocumentStoragePage() {
               </div>
            </Card>
 
-           <div className="p-8 border-2 border-dashed border-lns-border rounded-[2.5rem] flex flex-col items-center justify-center text-center space-y-4">
+           <div className="p-8 border-2 border-dashed border-lns-border rounded-2xl flex flex-col items-center justify-center text-center space-y-4">
               <div className="w-16 h-16 bg-lns-light-grey rounded-full flex items-center justify-center text-lns-mid-grey">
                  <Cloud size={24} />
               </div>

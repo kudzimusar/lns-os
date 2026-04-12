@@ -57,7 +57,7 @@ export default function OnboardingPage() {
           ))}
         </div>
 
-        <Card className="border-none shadow-2xl bg-white/5 backdrop-blur-xl overflow-hidden rounded-[2.5rem] border border-white/10">
+        <Card className="border-none shadow-2xl bg-white/5 backdrop-blur-xl overflow-hidden rounded-2xl border border-white/10">
           <CardContent className="p-10 space-y-8">
             <div className="space-y-2">
               <h2 className="text-2xl font-bold text-white">{steps[currentStep].title}</h2>

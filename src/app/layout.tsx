@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Manrope, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { StatusBanner } from "@/components/system/StatusBanner";
+import { AIDrawer } from "@/components/ai/AIDrawer";
+import { AIDrawerTrigger } from "@/components/ai/AIDrawerTrigger";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -36,6 +38,8 @@ export default function RootLayout({
       >
         <StatusBanner />
         {children}
+        <AIDrawer />
+        <AIDrawerTrigger />
       </body>
     </html>
   );

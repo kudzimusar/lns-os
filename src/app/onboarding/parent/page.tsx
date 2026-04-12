@@ -40,7 +40,7 @@ export default function ParentOnboarding() {
                   <p className="text-lns-mid-grey font-medium px-8">You have been invited by **Lennon Nash High School** to link with your child's academic profile.</p>
                </div>
                
-               <div className="p-8 bg-lns-navy rounded-[2.5rem] text-white flex items-center justify-between">
+               <div className="p-8 bg-lns-navy rounded-2xl text-white flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                      <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white font-black text-xl">L</div>
                      <div className="text-left">
@@ -102,7 +102,7 @@ export default function ParentOnboarding() {
                     { label: "Privacy Policy", desc: "How we protect and verify your child's student record on-ledger.", icon: ShieldCheck },
                     { label: "Institutional Data Rights", desc: "Your right to view, port, and challenge school-wide data hashes.", icon: Lock },
                   ].map(policy => (
-                     <div key={policy.label} className="p-6 bg-white border border-lns-border rounded-[2.5rem] flex items-center justify-between text-left hover:border-lns-red transition-all group">
+                     <div key={policy.label} className="p-6 bg-white border border-lns-border rounded-2xl flex items-center justify-between text-left hover:border-lns-red transition-all group">
                         <div className="flex items-center space-x-6">
                            <div className="w-12 h-12 rounded-2xl bg-lns-light-grey flex items-center justify-center text-lns-navy group-hover:bg-lns-navy group-hover:text-white transition-all">
                               <policy.icon size={24} />
@@ -118,7 +118,7 @@ export default function ParentOnboarding() {
                      </div>
                   ))}
                </div>
-               <Button onClick={() => setCurrentStep(4)} className="w-full h-20 bg-lns-navy text-white rounded-[2.5rem] font-black uppercase text-xs tracking-widest shadow-2xl">Confirm Institutional Agreement</Button>
+               <Button onClick={() => setCurrentStep(4)} className="w-full h-20 bg-lns-navy text-white rounded-2xl font-black uppercase text-xs tracking-widest shadow-2xl">Confirm Institutional Agreement</Button>
             </div>
          )}
 
@@ -144,7 +144,7 @@ export default function ParentOnboarding() {
                </div>
 
                <Link href="/parent/dashboard" className="block w-full">
-                  <Button className="w-full h-20 bg-lns-navy text-white rounded-[2.5rem] font-black uppercase tracking-widest text-lg shadow-2xl group">
+                  <Button className="w-full h-20 bg-lns-navy text-white rounded-2xl font-black uppercase tracking-widest text-lg shadow-2xl group">
                      Unlock Parent Portal <ArrowRight className="ml-4 group-hover:translate-x-2 transition-transform" />
                   </Button>
                </Link>

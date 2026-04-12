@@ -86,7 +86,7 @@ export default function SettingsPage() {
                       </CardHeader>
                       <CardContent className="p-10 flex flex-col items-center sm:flex-row sm:items-start gap-10">
                          <div className="relative">
-                            <div className="w-32 h-32 rounded-[2.5rem] bg-lns-navy flex items-center justify-center text-white text-4xl font-black shadow-2xl">SJ</div>
+                            <div className="w-32 h-32 rounded-2xl bg-lns-navy flex items-center justify-center text-white text-4xl font-black shadow-2xl">SJ</div>
                             <Button className="absolute -bottom-2 -right-2 h-10 w-10 p-0 rounded-2xl bg-lns-red shadow-xl border-4 border-white">
                                <RefreshCcw size={16} />
                             </Button>
@@ -116,7 +116,7 @@ export default function SettingsPage() {
                          <CardTitle className="text-xs uppercase tracking-[0.2em] font-black text-lns-navy">Encryption & Sovereignty</CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-8 p-10">
-                         <div className="flex items-center justify-between p-8 bg-green-50 rounded-[2.5rem] border border-green-100">
+                         <div className="flex items-center justify-between p-8 bg-green-50 rounded-2xl border border-green-100">
                             <div className="flex items-center space-x-6">
                                <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center text-green-600 shadow-sm"><Smartphone size={28} /></div>
                                <div>

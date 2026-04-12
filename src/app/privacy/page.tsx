@@ -69,7 +69,7 @@ export default function PrivacyPolicy() {
               </p>
            </section>
 
-           <div className="p-8 bg-lns-navy rounded-[2.5rem] text-white">
+           <div className="p-8 bg-lns-navy rounded-2xl text-white">
               <h4 className="text-lg font-bold mb-2">Notice to Minors</h4>
               <p className="text-xs text-slate-400 leading-relaxed">
                  Student data is shared only with registered legal guardians and authorized school personnel. We NEVER sell data to third-party educational advertisers or external tech aggregates.

@@ -97,7 +97,7 @@ export default function InstitutionalCalendar() {
                ))}
             </div>
             
-            <Card className="border-none shadow-2xl bg-lns-navy text-white p-8 rounded-[2.5rem] relative overflow-hidden">
+            <Card className="border-none shadow-2xl bg-lns-navy text-white p-8 rounded-2xl relative overflow-hidden">
                <div className="relative z-10 space-y-4">
                   <h4 className="text-lg font-black uppercase tracking-tight">Sync to Device</h4>
                   <p className="text-xs text-slate-400 font-bold leading-relaxed">Add the institutional timeline to your local iCal or Google Calendar node.</p>
