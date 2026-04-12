@@ -1,8 +1,12 @@
 import React from "react";
 import StudentClient from "./StudentClient";
 
-export function generateStaticParams() {
-  return [{ id: '1' }];
+export async function generateStaticParams() {
+  return [
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+  ];
 }
 
 export default async function StudentProfilePage({
