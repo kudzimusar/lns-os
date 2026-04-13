@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Inter, JetBrains_Mono } from "next/font/google";
+import { Manrope, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { StatusBanner } from "@/components/system/StatusBanner";
 import { AIDrawer } from "@/components/ai/AIDrawer";
@@ -11,9 +11,10 @@ const manrope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -34,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body
-        className={`${manrope.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased h-full text-lns-dark-grey`}
+        className={`${manrope.variable} ${dmSans.variable} ${jetbrainsMono.variable} font-sans antialiased h-full text-lns-dark-grey`}
         suppressHydrationWarning
       >
         <StatusBanner />

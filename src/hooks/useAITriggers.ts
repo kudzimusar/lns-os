@@ -21,20 +21,33 @@ export const useAITriggers = (data: any, pageName: string) => {
       if (pendingActions.some(item => item.id === triggerId)) return;
 
       if (pageName === 'Attendance') {
-        // Example: Detect consecutive absence
-        const absentStudent = data.find((s: any) => s.status === 'A');
-        if (absentStudent) {
+        // Predictive: flag students with ≥2 late marks before a 3rd absence occurs.
+        // In production this history comes from the DB; here it is mocked per student id.
+        const LATENESS_RISK_THRESHOLD = 2;
+        const mockLatenessHistory: Record<string, number> = {
+          '3': 2, // Catherine Great — 2 late incidents this week
+          '1': 1,
+        };
+
+        const atRiskStudent = data.find((s: any) => {
+          const lateCount = mockLatenessHistory[s.id] ?? 0;
+          // Predict risk when lateness pattern is present but absence not yet confirmed
+          return lateCount >= LATENESS_RISK_THRESHOLD && s.status !== 'A';
+        });
+
+        if (atRiskStudent) {
+          const lateCount = mockLatenessHistory[atRiskStudent.id];
           const newItem: ApprovalQueueItem = {
             id: triggerId,
-            type: 'CONSECUTIVE_ABSENCE',
-            severity: 'HIGH',
-            studentName: absentStudent.name,
+            type: 'PREDICTED_ABSENCE_RISK',
+            severity: 'MEDIUM',
+            studentName: atRiskStudent.name,
             generatedAt: new Date().toISOString(),
             status: 'DRAFT',
-            content: `AI Detection: ${absentStudent.name} has been absent for 3 consecutive days. Should I draft a wellness check message to the parents?`,
+            content: `AI Prediction: ${atRiskStudent.name} has been late ${lateCount} times this week. Pattern analysis indicates high risk of an upcoming absence. Recommend early parent contact now — before a 3rd incident is recorded.`,
             contentType: 'alert',
             recipient: { name: 'Guardian', id: 'g1', role: 'parent' },
-            aiConfidence: 'HIGH',
+            aiConfidence: 'MEDIUM',
             expiresAt: new Date(Date.now() + 172800000).toISOString(),
           };
           addQueueItem(newItem);

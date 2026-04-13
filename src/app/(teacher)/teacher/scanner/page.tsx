@@ -5,22 +5,17 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { 
-  QrCode, 
-  X, 
   UserCheck, 
   Clock, 
-  Camera,
-  Maximize2,
-  RefreshCcw,
   Zap,
   Monitor,
-  ShieldCheck,
   Lock
 } from "lucide-react";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { SealedBadge } from "@/components/blockchain/SealedBadge";
 import { BlockchainSealToast } from "@/components/blockchain/BlockchainSealToast";
 import { generateMockHash } from "@/lib/blockchain";
+import GeoFencedScanner from "@/components/attendance/GeoFencedScanner";
 
 const recentlyScanned = [
   { name: "John Doe", time: "11:24 AM", status: "Success" },
@@ -85,60 +80,10 @@ export default function QRScannerPage() {
         isLandscape ? "grid-cols-2" : "grid-cols-1"
       )}>
         <div className="space-y-6">
-          {/* Scanner Viewport - Optimized for Tablet */}
-          <Card className={cn(
-            "border-none shadow-2xl bg-[#0A1F44] relative overflow-hidden flex flex-col items-center justify-center rounded-2xl md:rounded-[2rem] transition-all",
-            isLandscape ? "aspect-square lg:aspect-video h-full" : "aspect-square w-full md:w-[70%] mx-auto"
-          )}>
-            {scanning ? (
-              <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-6 md:p-12">
-                <div className="relative">
-                  <div className="w-48 h-48 md:w-64 md:h-64 border-2 border-white/20 rounded-[2rem] md:rounded-[3rem] flex items-center justify-center relative overflow-hidden">
-                    <QrCode size={80} className="text-white/40 animate-pulse md:scale-150" />
-                    <div className="absolute top-0 left-0 w-full h-1 bg-lns-red shadow-[0_0_15px_rgba(214,43,43,1)] animate-scan" />
-                  </div>
-                  {/* Corner Accents - Tablet Specs */}
-                  <div className="absolute -top-1 -left-1 w-10 h-10 border-t-4 border-l-4 border-lns-red rounded-tl-xl" />
-                  <div className="absolute -top-1 -right-1 w-10 h-10 border-t-4 border-r-4 border-lns-red rounded-tr-xl" />
-                  <div className="absolute -bottom-1 -left-1 w-10 h-10 border-b-4 border-l-4 border-lns-red rounded-bl-xl" />
-                  <div className="absolute -bottom-1 -right-1 w-10 h-10 border-b-4 border-r-4 border-lns-red rounded-br-xl" />
-                </div>
-                
-                <p className="text-white font-black uppercase tracking-[0.3em] text-[8px] md:text-[10px] mt-8 md:mt-12 animate-pulse text-center">
-                  Establishing Neural Uplink...
-                </p>
-              </div>
-            ) : (
-              <div className="flex flex-col items-center justify-center space-y-4 md:space-y-6 text-white text-center p-8 md:p-12">
-                 <div className="w-16 h-16 md:w-20 md:h-20 bg-white/10 rounded-full flex items-center justify-center">
-                    <Camera size={30} className="text-white/40 md:scale-125" />
-                 </div>
-                 <h3 className="text-lg md:text-xl font-bold">Scanner Standby</h3>
-                 <p className="text-slate-400 text-[10px] md:text-xs max-w-[200px] leading-relaxed">Camera node offline. Initialize to resume institutional verification.</p>
-                 <Button onClick={() => setScanning(true)} className="bg-lns-red hover:bg-red-700 text-white h-12 px-8 rounded-2xl font-black uppercase tracking-widest text-[10px] active:scale-95 transition-transform shadow-lg shadow-lns-red/20">
-                   Initialize Node
-                 </Button>
-              </div>
-            )}
-            
-            {/* Viewport Controls */}
-            <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-              <div className="flex items-center space-x-2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-[9px] md:text-[10px] font-black text-white uppercase tracking-widest leading-none">
-                  SECURE CONNECTION
-                </span>
-              </div>
-              <div className="flex space-x-2">
-                <Button variant="ghost" className="text-white hover:bg-white/10 p-0 h-10 w-10 rounded-xl active:scale-90">
-                  <Maximize2 size={18} />
-                </Button>
-                <Button variant="ghost" className="text-white hover:bg-white/10 p-0 h-10 w-10 rounded-xl active:scale-90">
-                  <RefreshCcw size={18} />
-                </Button>
-              </div>
-            </div>
-          </Card>
+          {/* Geofenced Scanner - Advanced Attendance Node */}
+          <GeoFencedScanner />
+
+          {/* Manual Entry - Optimized for Tablet */}
 
           {/* Manual Entry - Optimized for Tablet */}
           <Card className="border-none shadow-sm bg-white p-6 rounded-2xl">

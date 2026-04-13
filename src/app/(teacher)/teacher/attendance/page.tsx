@@ -3,18 +3,19 @@
 import React, { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { 
-  Check, 
-  X, 
-  Clock, 
-  QrCode, 
-  Printer, 
-  Lock, 
+import {
+  Check,
+  X,
+  Clock,
+  QrCode,
+  Printer,
+  Lock,
   Search,
   Filter,
   ChevronDown,
   Zap,
-  Sparkles
+  Sparkles,
+  History
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -34,7 +35,25 @@ import { useAITriggers } from "@/hooks/useAITriggers";
 
 export default function AttendancePage() {
   const [locked, setLocked] = useState(false);
-  
+  const [studentStatuses, setStudentStatuses] = useState<Record<string, string>>(
+    Object.fromEntries(students.map(s => [s.id, s.status]))
+  );
+  const [corrections, setCorrections] = useState<Record<string, { from: string; to: string; by: string; time: string }>>({});
+
+  function handleMarkChange(studentId: string, currentMark: string, newMark: string) {
+    if (currentMark === newMark) return;
+    setStudentStatuses(prev => ({ ...prev, [studentId]: newMark }));
+    setCorrections(prev => ({
+      ...prev,
+      [studentId]: {
+        from: currentMark,
+        to: newMark,
+        by: 'Mr. Okafor',
+        time: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
+      },
+    }));
+  }
+
   // Activate Layer 3: Trigger Engine
   useAITriggers(students, 'Attendance');
 
@@ -117,22 +136,31 @@ export default function AttendancePage() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center bg-lns-light-grey/30 rounded-xl p-1 gap-1">
-                {["P", "A", "L"].map((m) => (
-                  <button
-                    key={m}
-                    className={cn(
-                      "w-11 h-11 rounded-lg text-xs font-black transition-all border",
-                      student.status === m
-                        ? m === "P" ? "bg-green-600 border-green-600 text-white shadow-md scale-105" : 
-                          m === "A" ? "bg-lns-red border-lns-red text-white shadow-md scale-105" : 
-                          "bg-amber-500 border-amber-500 text-white shadow-md scale-105"
-                        : "bg-white border-lns-border/20 text-lns-mid-grey"
-                    )}
-                  >
-                    {m}
-                  </button>
-                ))}
+              <div className="flex flex-col items-end gap-1.5">
+                <div className="flex items-center bg-lns-light-grey/30 rounded-xl p-1 gap-1">
+                  {["P", "A", "L"].map((m) => (
+                    <button
+                      key={m}
+                      onClick={() => handleMarkChange(student.id, studentStatuses[student.id], m)}
+                      className={cn(
+                        "w-11 h-11 rounded-lg text-xs font-black transition-all border",
+                        studentStatuses[student.id] === m
+                          ? m === "P" ? "bg-green-600 border-green-600 text-white shadow-md scale-105" :
+                            m === "A" ? "bg-lns-red border-lns-red text-white shadow-md scale-105" :
+                            "bg-amber-500 border-amber-500 text-white shadow-md scale-105"
+                          : "bg-white border-lns-border/20 text-lns-mid-grey"
+                      )}
+                    >
+                      {m}
+                    </button>
+                  ))}
+                </div>
+                {corrections[student.id] && (
+                  <div className="flex items-center gap-1 text-[8px] text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-100 whitespace-nowrap">
+                    <History size={9} />
+                    Mark changed from {corrections[student.id].from} to {corrections[student.id].to} by {corrections[student.id].by} — {corrections[student.id].time}
+                  </div>
+                )}
               </div>
             </div>
             
@@ -205,22 +233,31 @@ export default function AttendancePage() {
                     </div>
                   </td>
                   <td className="px-6 py-4 text-center">
-                    <div className="inline-flex items-center space-x-1.5 p-1 bg-gray-50 rounded-xl border border-gray-100 shadow-inner">
-                      {["P", "A", "L"].map((m) => (
-                        <button
-                          key={m}
-                          className={cn(
-                            "w-9 h-9 rounded-lg text-xs font-black transition-all border",
-                            student.status === m
-                              ? m === "P" ? "bg-green-600 border-green-600 text-white shadow-md" : 
-                                m === "A" ? "bg-lns-red border-lns-red text-white shadow-md" : 
-                                "bg-amber-500 border-amber-500 text-white shadow-md"
-                              : "bg-white border-lns-border/30 text-lns-mid-grey hover:border-lns-navy hover:text-lns-navy"
-                          )}
-                        >
-                          {m}
-                        </button>
-                      ))}
+                    <div className="inline-flex flex-col items-center gap-1.5">
+                      <div className="inline-flex items-center space-x-1.5 p-1 bg-gray-50 rounded-xl border border-gray-100 shadow-inner">
+                        {["P", "A", "L"].map((m) => (
+                          <button
+                            key={m}
+                            onClick={() => handleMarkChange(student.id, studentStatuses[student.id], m)}
+                            className={cn(
+                              "w-9 h-9 rounded-lg text-xs font-black transition-all border",
+                              studentStatuses[student.id] === m
+                                ? m === "P" ? "bg-green-600 border-green-600 text-white shadow-md" :
+                                  m === "A" ? "bg-lns-red border-lns-red text-white shadow-md" :
+                                  "bg-amber-500 border-amber-500 text-white shadow-md"
+                                : "bg-white border-lns-border/30 text-lns-mid-grey hover:border-lns-navy hover:text-lns-navy"
+                            )}
+                          >
+                            {m}
+                          </button>
+                        ))}
+                      </div>
+                      {corrections[student.id] && (
+                        <div className="flex items-center gap-1 text-[8px] text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-100 whitespace-nowrap">
+                          <History size={9} />
+                          Mark changed from {corrections[student.id].from} to {corrections[student.id].to} by {corrections[student.id].by} — {corrections[student.id].time}
+                        </div>
+                      )}
                     </div>
                   </td>
                   <td className="px-6 py-4">
