@@ -50,6 +50,16 @@ const approvals = [
 ];
 
 export default function AdminApprovalsPage() {
+  const [filter, setFilter] = React.useState("All");
+
+  const filteredApprovals = approvals.filter(app => {
+    if (filter === "All") return true;
+    if (filter === "Disciplinary") return app.type === "Disciplinary Log";
+    if (filter === "Academic") return app.type === "Grade Correction";
+    if (filter === "Financial") return app.type === "Expenditure";
+    return true;
+  });
+
   return (
     <PageShell 
       title="AI Approval Queue" 
@@ -58,18 +68,19 @@ export default function AdminApprovalsPage() {
       <div className="space-y-8 mt-8">
         {/* Priority Filter */}
         <div className="flex bg-white p-2 rounded-2xl shadow-sm border border-gray-100 w-fit">
-           {["All Tasks", "Disciplinary", "Financial", "Academic"].map((filter, i) => (
+           {["All", "Disciplinary", "Financial", "Academic"].map((f) => (
               <button 
-                key={filter}
-                className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${i === 0 ? 'bg-[#0A1F44] text-white shadow-lg' : 'text-[#8C92A0] hover:text-[#0A1F44]'}`}
+                key={f}
+                onClick={() => setFilter(f)}
+                className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${filter === f ? 'bg-[#0A1F44] text-white shadow-lg' : 'text-[#8C92A0] hover:text-[#0A1F44]'}`}
               >
-                 {filter}
+                 {f}
               </button>
            ))}
         </div>
 
         <div className="grid grid-cols-1 gap-6">
-          {approvals.map((app, i) => (
+          {filteredApprovals.map((app, i) => (
             <motion.div
               key={app.id}
               initial={{ opacity: 0, x: -20 }}

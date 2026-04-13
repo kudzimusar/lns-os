@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 
 const mockChildren = [
   {
-    id: "stud_1",
+    id: "student-001",
     name: "Amara Johnson",
     grade: "8A",
     attendance: "98.2%",
@@ -18,8 +18,8 @@ const mockChildren = [
     image: null
   },
   {
-    id: "stud_2",
-    name: "Marcus Johnson",
+    id: "student-004",
+    name: "David Moyo",
     grade: "10C",
     attendance: "94.5%",
     house: "Red House",

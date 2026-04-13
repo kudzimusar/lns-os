@@ -9,5 +9,5 @@ export async function generateStaticParams() {
 }
 
 export default function ParentMessageThreadPage({ params }: { params: { threadId: string } }) {
-  return <ParentMessagesPage params={params} />;
+  return <ParentMessagesPage />;
 }
