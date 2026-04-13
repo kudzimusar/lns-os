@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { GraduationCap, Star, Heart, Building2, ArrowRight } from "lucide-react";
 import Link from "next/link";

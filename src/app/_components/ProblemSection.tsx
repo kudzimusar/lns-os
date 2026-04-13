@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Lock, Zap, EyeOff, Link2Off } from "lucide-react";
 

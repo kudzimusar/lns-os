@@ -32,6 +32,11 @@ export function InteractiveDemo() {
   const [activeTab, setActiveTab] = useState(0);
   const [isSealing, setIsSealing] = useState(false);
   const [isSealed, setIsSealed] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const tabs = [
     { label: "Teacher Dashboard", icon: BarChart3 },
@@ -125,7 +130,7 @@ export function InteractiveDemo() {
                 {/* Main Content Area */}
                 <div className="flex-1 p-8 bg-[#F4F5F7]">
                    <AnimatePresence mode="wait">
-                      {activeTab === 0 && <DemoDashboard key="dashboard" />}
+                      {activeTab === 0 && <DemoDashboard key="dashboard" mounted={mounted} />}
                       {activeTab === 1 && <DemoAttendance key="attendance" onSeal={handleSealAction} isSealing={isSealing} isSealed={isSealed} />}
                       {activeTab === 2 && <DemoAIInsights key="ai" />}
                       {activeTab === 3 && <DemoReport key="report" />}
@@ -163,7 +168,7 @@ export function InteractiveDemo() {
   );
 }
 
-function DemoDashboard() {
+function DemoDashboard({ mounted }: { mounted: boolean }) {
    return (
       <motion.div 
         initial={{ opacity: 0, x: 20 }}
@@ -200,23 +205,25 @@ function DemoDashboard() {
             <div className="md:col-span-2 bg-white p-6 rounded-2xl shadow-sm">
                <p className="text-[10px] font-black text-[#8C92A0] uppercase tracking-widest mb-6">Weekly Attendance Score</p>
                <div className="h-64 mt-4">
-                  <ResponsiveContainer width="100%" height="100%">
-                     <BarChart data={attendanceData} role="img" aria-label="Weekly Attendance Score Chart">
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F0F0F0" />
-                        <XAxis 
-                          dataKey="name" 
-                          axisLine={false} 
-                          tickLine={false} 
-                          tick={{ fontSize: 10, fontWeight: 900, fill: '#8C92A0' }} 
-                        />
-                        <YAxis hide domain={[0, 100]} />
-                        <Bar dataKey="score" radius={[8, 8, 8, 8]} barSize={40}>
-                           {attendanceData.map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={entry.score > 90 ? '#0A1F44' : '#D62B2B'} />
-                           ))}
-                        </Bar>
-                     </BarChart>
-                  </ResponsiveContainer>
+                  {mounted && (
+                    <ResponsiveContainer width="100%" height="100%">
+                       <BarChart data={attendanceData} role="img" aria-label="Weekly Attendance Score Chart">
+                          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F0F0F0" />
+                          <XAxis 
+                            dataKey="name" 
+                            axisLine={false} 
+                            tickLine={false} 
+                            tick={{ fontSize: 10, fontWeight: 900, fill: '#8C92A0' }} 
+                          />
+                          <YAxis hide domain={[0, 100]} />
+                          <Bar dataKey="score" radius={[8, 8, 8, 8]} barSize={40}>
+                             {attendanceData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={entry.score > 90 ? '#0A1F44' : '#D62B2B'} />
+                             ))}
+                          </Bar>
+                       </BarChart>
+                    </ResponsiveContainer>
+                  )}
                </div>
             </div>
             <div className="space-y-4">
