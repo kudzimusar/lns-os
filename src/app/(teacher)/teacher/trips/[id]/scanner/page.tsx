@@ -24,6 +24,16 @@ import {
   Loader2
 } from "lucide-react";
 
+export async function generateStaticParams() {
+  return [
+    { id: 'trip-001' },
+    { id: 'trip-002' },
+    { id: 'trip-003' },
+    { id: 'trip-004' },
+    { id: 'trip-005' },
+  ];
+}
+
 const MOCK_STUDENTS = {
   "STU-001": { name: "Amara Johnson", paid: true, consent: true, status: "READY" },
   "STU-002": { name: "Blake Nkosi", paid: true, consent: true, status: "READY" },
