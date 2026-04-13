@@ -6,7 +6,27 @@ import { Button } from "@/components/ui/Button";
 import { Construction, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-export default function PageShell({ title = "Module Shell", description = "This feature is currently being integrated into the LNS OS Core." }) {
+export default function PageShell({ 
+  title = "Module Shell", 
+  description = "This feature is currently being integrated into the LNS OS Core.",
+  children
+}: { 
+  title?: string; 
+  description?: string; 
+  children?: React.ReactNode;
+}) {
+  if (children) {
+    return (
+      <div className="p-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="mb-8">
+           <h1 className="text-3xl font-[900] text-lns-navy tracking-tight uppercase font-manrope">{title}</h1>
+           <p className="text-lns-mid-grey font-bold uppercase tracking-widest text-[10px] mt-1">{description}</p>
+        </div>
+        {children}
+      </div>
+    );
+  }
+
   return (
     <div className="h-full flex flex-col items-center justify-center space-y-6 text-center animate-in fade-in slide-in-from-bottom-4 duration-500 py-20">
       <div className="w-24 h-24 bg-lns-navy/5 rounded-3xl flex items-center justify-center text-lns-navy mb-4">

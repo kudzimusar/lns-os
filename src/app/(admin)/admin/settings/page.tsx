@@ -1,133 +1,114 @@
 "use client";
 
 import React from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
+import PageShell from "@/components/ui/PageShell";
+import { Card, CardContent } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { 
-  Building2, 
-  Calendar, 
-  Settings2, 
-  GraduationCap, 
-  BellRing,
-  QrCode,
-  ShieldCheck,
+  Settings, 
+  Shield, 
+  Database, 
+  Bell, 
+  Users, 
+  Globe, 
+  Lock, 
+  Zap,
   ChevronRight,
-  Database,
-  Lock,
-  Globe
+  ExternalLink
 } from "lucide-react";
+import { motion } from "framer-motion";
 
-const configGroups = [
+const groups = [
   {
-    title: "School Identity",
-    icon: Building2,
-    items: ["School Name & Logo", "Campus Locations", "Contact Directories"]
+    title: "System Integrity",
+    items: [
+      { name: "Blockchain Node Status", icon: Database, value: "Operational — Block #847k", action: "Manage Nodes" },
+      { name: "Encryption Protocols", icon: Lock, value: "AES-256 Quantum Resistant", action: "Rotate Keys" },
+      { name: "AI Model Config", icon: Zap, value: "LNS-LLM v4.2 Internal", action: "Tune Weights" }
+    ]
   },
   {
-    title: "Academic Configuration",
-    icon: GraduationCap,
-    items: ["Term Dates & Holidays", "Grading Scales (MYP/IB)", "Subject Weightings"]
-  },
-  {
-    title: "System & Protocol",
-    icon: ShieldCheck,
-    items: ["Blockchain Sync Frequency", "QR Protocol Management", "Notification Thresholds"]
+    title: "Community & Access",
+    items: [
+      { name: "Global Permissions", icon: Users, value: "Role-based Active", action: "Audit Roles" },
+      { name: "Parent Interface", icon: Globe, value: "Multilingual Enabled", action: "Language Settings" },
+      { name: "Notification Hub", icon: Bell, value: "Email/PWA/SMS Push Active", action: "Config Hub" }
+    ]
   }
 ];
 
 export default function AdminSettingsPage() {
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12 px-4 md:px-0">
-      {/* Header Section - Tablet Optimized */}
-      <div className="flex flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-black text-lns-navy tracking-tight uppercase">School Configuration</h1>
-          <p className="text-xs md:text-sm text-lns-mid-grey font-medium uppercase tracking-widest italic">Institutional standards, grading protocols and ledger settings.</p>
-        </div>
-        <div className="flex items-center gap-3">
-           <Button variant="outline" className="hidden md:flex h-12 rounded-xl font-black uppercase text-[10px] tracking-widest bg-white border-lns-border shadow-sm">
-             Export Config
-           </Button>
-           <Button className="w-full md:w-auto h-12 rounded-xl font-black uppercase text-[10px] tracking-widest bg-lns-red text-white hover:bg-red-700 shadow-lg shadow-lns-red/20 active:scale-95 transition-transform">
-             Commit Protocol Changes
-           </Button>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-         {configGroups.map((group) => (
-           <Card key={group.title} className="border-none shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden bg-white rounded-2xl group border-t-4 border-transparent hover:border-lns-red">
-              <CardHeader className="bg-lns-light-grey/20 border-b border-lns-border/5 p-6">
-                 <CardTitle className="flex items-center text-xs uppercase tracking-[0.2em] text-lns-navy font-black">
-                    <group.icon size={18} className="mr-3 text-lns-red group-hover:scale-110 transition-transform" />
-                    {group.title}
-                 </CardTitle>
-              </CardHeader>
-              <CardContent className="p-0">
-                 <div className="divide-y divide-lns-border/5">
-                    {group.items.map((item) => (
-                      <div key={item} className="p-6 flex items-center justify-between hover:bg-lns-light-grey/10 cursor-pointer transition-colors group/item active:bg-lns-light-grey/20 min-h-[64px]">
-                         <span className="text-sm font-black text-lns-navy group-hover/item:text-lns-red transition-colors uppercase tracking-tight">{item}</span>
-                         <ChevronRight size={18} className="text-lns-border group-hover/item:text-lns-navy group-hover/item:translate-x-1 transition-all" />
+    <PageShell 
+      title="System Settings" 
+      description="Global configuration and cryptographic governance for the LNS OS infrastructure."
+    >
+      <div className="space-y-12 mt-8 max-w-5xl">
+        {groups.map((group, groupIndex) => (
+          <div key={group.title} className="space-y-6">
+            <h3 className="text-sm font-black text-[#8C92A0] uppercase tracking-[0.3em] font-manrope">{group.title}</h3>
+            <div className="grid grid-cols-1 gap-4">
+              {group.items.map((item, itemIndex) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: (groupIndex * 3 + itemIndex) * 0.05 }}
+                >
+                  <Card className="border-none shadow-sm hover:shadow-md transition-all group bg-white overflow-hidden">
+                    <CardContent className="p-0">
+                      <div className="flex flex-col md:flex-row md:items-center justify-between p-6 gap-6">
+                        <div className="flex items-center space-x-6">
+                           <div className="w-12 h-12 rounded-2xl bg-[#0A1F44]/5 flex items-center justify-center text-[#0A1F44] group-hover:bg-[#0A1F44] group-hover:text-white transition-all">
+                              <item.icon size={22} />
+                           </div>
+                           <div>
+                              <h4 className="text-xs font-black text-[#0A1F44] uppercase tracking-widest">{item.name}</h4>
+                              <p className="text-[11px] font-bold text-[#8C92A0] mt-0.5">{item.value}</p>
+                           </div>
+                        </div>
+                        <Button variant="ghost" className="h-11 px-6 rounded-xl text-[10px] font-black uppercase tracking-widest text-[#0A1F44] bg-[#F4F5F7] hover:bg-[#0A1F44] hover:text-white transition-all flex items-center group/btn">
+                           {item.action} <ChevronRight size={14} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                        </Button>
                       </div>
-                    ))}
-                 </div>
-              </CardContent>
-           </Card>
-         ))}
-
-         {/* Specialized Security Card - Section 13/21 */}
-         <Card className="border-none shadow-2xl bg-lns-navy text-white relative overflow-hidden flex flex-col p-8 rounded-2xl min-h-[240px] md:col-span-2 lg:col-span-1">
-            <div className="absolute -top-10 -right-10 opacity-5 pointer-events-none">
-               <Database size={200} />
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
             </div>
-            
-            <div className="relative z-10 space-y-6">
-               <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-black tracking-tight uppercase italic flex items-center gap-3">
-                    <Lock className="text-lns-red" size={20} />
-                    Node Security
-                  </h3>
-                  <div className="flex items-center gap-2 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
-                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                     <span className="text-[10px] font-black uppercase text-green-500 tracking-widest">Encrypted</span>
-                  </div>
-               </div>
+          </div>
+        ))}
 
-               <div className="space-y-4">
-                  <div className="space-y-2">
-                     <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-400 italic">
-                        <span>Ledger Sync Latency</span>
-                        <span className="text-white">0.4ms</span>
-                     </div>
-                     <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                        <div className="bg-lns-red h-full w-[94%] animate-in slide-in-from-left duration-1000" />
-                     </div>
-                  </div>
-                  
-                  <p className="text-[11px] text-slate-400 leading-relaxed font-medium uppercase tracking-wider">
-                     Institutional blockchain nodes are currently synchronizing attendance hashes across the local network. 
-                     Authorization required for manual override.
-                  </p>
-               </div>
-
-               <Button className="w-full bg-white text-lns-navy hover:bg-slate-100 rounded-xl h-12 text-[10px] font-black uppercase tracking-widest active:scale-95 transition-all mt-auto shadow-xl shadow-black/20">
-                  Manage Terminal Access
-               </Button>
-            </div>
-         </Card>
-
-         {/* Advanced Settings Hint */}
-         <div className="md:col-span-2 lg:col-span-3 pt-6 border-t border-gray-100 mt-4 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-4 text-xs font-black text-lns-mid-grey uppercase tracking-widest italic opacity-50">
-               <Globe size={16} /> Global System Protocol v4.0.1
-            </div>
-            <div className="flex items-center gap-6">
-               <span className="text-[10px] font-black text-lns-navy/30 uppercase tracking-[0.3em]">Institutional ID: LNS-7742</span>
-               <span className="text-[10px] font-black text-lns-navy/30 uppercase tracking-[0.3em]">Last Sync: Just Now</span>
-            </div>
-         </div>
+        {/* Danger Zone */}
+        <div className="pt-12 border-t border-gray-100">
+          <Card className="border-2 border-red-100 bg-red-50/30 p-8 rounded-[2rem] overflow-hidden relative">
+             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div className="space-y-2 text-center md:text-left">
+                   <h3 className="text-lg font-black text-red-600 uppercase tracking-tight flex items-center justify-center md:justify-start">
+                      <Shield size={20} className="mr-2" /> System Governance
+                   </h3>
+                   <p className="text-xs font-bold text-red-600/60 leading-relaxed uppercase tracking-widest">
+                      Critical actions affecting every record on the institutional ledger. 
+                   </p>
+                </div>
+                <div className="flex items-center gap-4">
+                   <Button className="bg-white text-red-600 border border-red-100 hover:bg-red-600 hover:text-white font-black uppercase tracking-widest text-[10px] h-12 px-8 rounded-xl transition-all">
+                      Export Audit Ledger
+                   </Button>
+                   <Button className="bg-red-600 hover:bg-red-700 text-white font-black uppercase tracking-widest text-[10px] h-12 px-8 rounded-xl shadow-lg shadow-red-600/20 active:scale-95 transition-all">
+                      Emergency Lockdown
+                   </Button>
+                </div>
+             </div>
+          </Card>
+        </div>
+        
+        <div className="text-center pt-8">
+           <p className="text-[9px] font-black text-[#8C92A0] uppercase tracking-[0.4em]">
+              Lennon Nash System Core v2.0.4 — © 2026 
+           </p>
+        </div>
       </div>
-    </div>
+    </PageShell>
   );
 }
