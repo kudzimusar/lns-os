@@ -36,7 +36,7 @@ const menuItems = [
   { name: "Timetable", icon: Clock, href: "/teacher/timetable" },
   { name: "Reports", icon: FileBarChart, href: "/teacher/reports" },
   { name: "AI Insights", icon: BrainCircuit, href: "/teacher/ai-insights" },
-  { name: "Analytics", icon: BarChart3, href: "/admin/analytics" },
+  { name: "Analytics", icon: BarChart3, href: "/teacher/analytics" },
   { name: "Documents", icon: FileText, href: "/documents" },
 ];
 

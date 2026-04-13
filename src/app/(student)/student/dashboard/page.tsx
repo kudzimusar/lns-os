@@ -7,11 +7,15 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { StatCard, GradeCard } from "@/components/tablet/Cards";
 import { StudentSchedule } from "@/components/tablet/StudentSchedule";
-import { 
+import {
   Megaphone,
   Activity,
   QrCode,
   ChevronRight,
+  User,
+  FolderOpen,
+  Calendar,
+  HelpCircle,
 } from "lucide-react";
 
 export default function StudentDashboard() {
@@ -118,14 +122,16 @@ export default function StudentDashboard() {
       {/* Quick Access Grid - Tablet Footer */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
          {[
-            { label: "My Profile", href: "/student/profile", icon: "👤" },
-            { label: "Documents", href: "/student/documents", icon: "📄" },
-            { label: "Timetable", href: "/student/timetable", icon: "📅" },
-            { label: "Help Hub", href: "/student/support", icon: "❓" },
+            { label: "My Profile", href: "/student/profile", Icon: User },
+            { label: "Documents", href: "/documents", Icon: FolderOpen },
+            { label: "Timetable", href: "/student/timetable", Icon: Calendar },
+            { label: "Help Hub", href: "/support", Icon: HelpCircle },
          ].map((item) => (
             <Link key={item.label} href={item.href}>
                <Card className="p-4 border-none shadow-sm hover:shadow-md transition-all flex items-center gap-4 rounded-2xl group">
-                  <span className="text-xl group-hover:scale-110 transition-transform">{item.icon}</span>
+                  <div className="w-9 h-9 rounded-xl bg-lns-navy/5 text-lns-navy flex items-center justify-center group-hover:bg-lns-red group-hover:text-white transition-all shrink-0">
+                     <item.Icon size={18} />
+                  </div>
                   <span className="text-[10px] font-black uppercase tracking-widest text-lns-navy">{item.label}</span>
                </Card>
             </Link>

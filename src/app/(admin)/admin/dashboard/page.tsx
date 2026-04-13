@@ -69,7 +69,7 @@ export default function AdminDashboard() {
         <Card className="border-none shadow-sm bg-white">
           <CardContent className="pt-6">
             <ShieldAlert size={20} className="text-green-600 mb-2" />
-            <p className="text-2xl font-[900] text-lns-navy">Verfied</p>
+            <p className="text-2xl font-[900] text-lns-navy">Verified</p>
             <p className="text-[10px] font-bold text-lns-mid-grey uppercase tracking-wider">Chain Integrity</p>
           </CardContent>
         </Card>

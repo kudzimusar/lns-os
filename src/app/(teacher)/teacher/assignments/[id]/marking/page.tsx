@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { ASSIGNMENTS } from "@/lib/placeholder-data";
 import TeacherMarkingClient from "./TeacherMarkingClient";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 export async function generateStaticParams() {
   return ASSIGNMENTS.map((a) => ({
@@ -9,5 +10,9 @@ export async function generateStaticParams() {
 }
 
 export default function TeacherMarkingPage({ params }: { params: { id: string } }) {
-  return <TeacherMarkingClient params={params} />;
+  return (
+    <Suspense fallback={<Skeleton className="h-screen w-full" />}>
+      <TeacherMarkingClient params={params} />
+    </Suspense>
+  );
 }

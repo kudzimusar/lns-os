@@ -1,16 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { PLACEHOLDER_TEACHERS } from "@/lib/placeholder-data";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { 
-  ArrowLeft, 
-  Send, 
-  Paperclip, 
-  User, 
-  Search, 
-  Check, 
+import {
+  ArrowLeft,
+  Send,
+  Paperclip,
+  User,
+  Search,
+  Check,
   ShieldCheck,
   Globe,
   Plus
@@ -19,7 +19,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-export default function NewMessagePage() {
+function NewMessageForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialTo = searchParams.get('to');
@@ -149,5 +149,13 @@ export default function NewMessagePage() {
          </div>
       </form>
     </div>
+  );
+}
+
+export default function NewMessagePage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><div className="w-8 h-8 border-4 border-lns-navy/20 border-t-lns-navy rounded-full animate-spin" /></div>}>
+      <NewMessageForm />
+    </Suspense>
   );
 }

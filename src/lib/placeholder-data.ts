@@ -31,31 +31,82 @@ export const PARENT_CHILDREN: ParentChildren[] = [
 ];
 
 export const ASSIGNMENTS: Assignment[] = [
-  { 
-    id: 'asg-001', 
-    title: 'Modernist Poetry Analysis', 
-    subject: 'Communications (English)', 
+  {
+    id: 'asg-001',
+    title: 'Modernist Poetry Analysis',
+    subject: 'Communications (English)',
     teacher: 'Ms. Sarah Chen',
-    dueDate: '2026-04-15T16:00:00', 
-    status: 'In Progress', 
-    urgency: 'critical', 
+    dueDate: '2026-04-15T16:00:00',
+    status: 'In Progress',
+    urgency: 'critical',
     description: "Analyze the use of imagery in T.S. Eliot's 'The Waste Land'. Focus on the themes of disillusionment and fragmentation.",
     questions: [
       { id: 'q1', text: 'How does the opening line "April is the cruelest month" set the tone for the poem?', type: 'essay' },
       { id: 'q2', text: 'Identify three specific images of decay used in the first section.', type: 'short_answer' }
     ]
   },
-  { 
-    id: 'asg-002', 
-    title: 'Quantum Physics Fundamentals', 
-    subject: 'Science', 
+  {
+    id: 'asg-002',
+    title: 'Quantum Physics Fundamentals',
+    subject: 'Science',
     teacher: 'Mr. David Petrov',
-    dueDate: '2026-04-16T09:00:00', 
-    status: 'Not Started', 
-    urgency: 'high', 
+    dueDate: '2026-04-16T09:00:00',
+    status: 'Not Started',
+    urgency: 'high',
     description: 'Complete the lab report on wave-particle duality. Ensure all equations are rendered correctly in LaTeX format.',
     questions: [
       { id: 'q1', text: 'Explain the double-slit experiment result.', type: 'essay' }
+    ]
+  },
+  {
+    id: 'asg-003',
+    title: 'Algebraic Structures & Proof',
+    subject: 'Mathematics',
+    teacher: 'Mr. James Okafor',
+    dueDate: '2026-03-28T16:00:00',
+    status: 'Completed',
+    urgency: 'low',
+    score: 46,
+    maxScore: 50,
+    feedback: 'Exceptional command of formal proof methodology. Your use of induction in Question 3 demonstrated graduate-level logical rigour. A small deduction on sign notation in Q5, but overall an outstanding submission that reflects deep conceptual mastery.',
+    description: 'Prove the following algebraic identities using direct proof and mathematical induction. Show all working.',
+    questions: [
+      { id: 'q1', text: 'Prove by induction that the sum of the first n natural numbers equals n(n+1)/2.', type: 'essay' },
+      { id: 'q2', text: 'Solve and verify: 3x² − 12x + 9 = 0.', type: 'short_answer' },
+      { id: 'q3', text: 'Expand and simplify (a + b)³.', type: 'short_answer' }
+    ]
+  },
+  {
+    id: 'asg-004',
+    title: 'Renaissance Art & Patronage',
+    subject: 'Humanities',
+    teacher: 'Ms. Amina Hassan',
+    dueDate: '2026-03-20T16:00:00',
+    status: 'Completed',
+    urgency: 'low',
+    score: 38,
+    maxScore: 40,
+    feedback: 'A beautifully argued essay. Your analysis of the Medici patronage system was precise and well-sourced. The comparison with Church patronage in the final paragraph showed sophisticated critical thinking. Minor formatting issues in citations prevented a perfect score.',
+    description: 'Write a 1,200-word analytical essay examining how patronage networks shaped artistic production in 15th-century Florence.',
+    questions: [
+      { id: 'q1', text: 'Analyse how the Medici family used art as a tool for political power.', type: 'essay' }
+    ]
+  },
+  {
+    id: 'asg-005',
+    title: 'Ecology & Biome Systems',
+    subject: 'Science',
+    teacher: 'Mr. David Petrov',
+    dueDate: '2026-03-10T16:00:00',
+    status: 'Completed',
+    urgency: 'low',
+    score: 29,
+    maxScore: 35,
+    feedback: 'Good foundational understanding of trophic levels and energy flow. Your diagram of the food web was accurate and clearly labelled. The extended response on climate impact on biomes needed more specific examples — generic points limited the depth score.',
+    description: 'Diagram and describe a complete food web for a chosen biome. Explain how climate change disrupts energy flow.',
+    questions: [
+      { id: 'q1', text: 'Draw and annotate a food web for the African savannah biome.', type: 'file_upload' },
+      { id: 'q2', text: 'How does increasing temperature affect decomposer activity in your chosen biome?', type: 'essay' }
     ]
   },
 ];
