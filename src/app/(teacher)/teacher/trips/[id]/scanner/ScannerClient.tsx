@@ -24,8 +24,6 @@ import {
   Loader2
 } from "lucide-react";
 
-} from "lucide-react";
-
 const MOCK_STUDENTS = {
   "STU-001": { name: "Amara Johnson", paid: true, consent: true, status: "READY" },
   "STU-002": { name: "Blake Nkosi", paid: true, consent: true, status: "READY" },
