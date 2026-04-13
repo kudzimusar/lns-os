@@ -2,15 +2,18 @@
 
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
-import { 
-  QrCode, 
-  Calendar, 
-  Zap, 
-  CheckCircle2, 
-  Clock, 
-  AlertCircle 
+import {
+  QrCode,
+  Calendar,
+  Zap,
+  CheckCircle2,
+  Clock,
+  AlertCircle,
+  XCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAttendanceStore } from "@/store/attendanceStore";
+import { useAttendanceBroadcast } from "@/hooks/useAttendanceBroadcast";
 
 const attendanceSummary = [
   { label: "On Time", value: "92%", icon: CheckCircle2, color: "text-green-600" },
@@ -20,11 +23,48 @@ const attendanceSummary = [
 ];
 
 export default function StudentAttendance() {
+  const { entries } = useAttendanceStore();
+  useAttendanceBroadcast();
+  const myEntry     = entries.find(e => e.studentId === 'student-001');
+  const todayStatus = myEntry?.status ?? 'PENDING';
+  const todayTime   = myEntry?.timestamp ?? null;
+
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12">
       <div>
-        <h1 className="text-3xl font-[800] text-lns-navy tracking-tight">Attendance & QR</h1>
+        <h1 className="text-3xl font-[800] text-lns-navy tracking-tight">Attendance &amp; QR</h1>
         <p className="text-lns-mid-grey font-medium">Scan your code at the door to mark presence.</p>
+      </div>
+
+      {/* Live today status */}
+      <div className={cn(
+        "flex items-center gap-3 p-4 rounded-2xl border",
+        todayStatus === 'P' ? "bg-green-50 border-green-100" :
+        todayStatus === 'A' ? "bg-red-50 border-red-100" :
+        todayStatus === 'L' ? "bg-amber-50 border-amber-100" :
+        "bg-lns-light-grey border-lns-border/10"
+      )}>
+        {todayStatus === 'P'       && <CheckCircle2 size={22} className="text-green-600 shrink-0" />}
+        {todayStatus === 'A'       && <XCircle      size={22} className="text-lns-red shrink-0" />}
+        {todayStatus === 'L'       && <Clock        size={22} className="text-amber-500 shrink-0" />}
+        {todayStatus === 'PENDING' && <Clock        size={22} className="text-lns-mid-grey shrink-0" />}
+        <div>
+          <p className={cn("text-sm font-black",
+            todayStatus === 'P' ? "text-green-700" :
+            todayStatus === 'A' ? "text-lns-red" :
+            todayStatus === 'L' ? "text-amber-700" : "text-lns-mid-grey"
+          )}>
+            {todayStatus === 'P' ? `Present${todayTime ? ` · ${todayTime}` : ''}` :
+             todayStatus === 'A' ? 'Absent' :
+             todayStatus === 'L' ? `Late${todayTime ? ` · ${todayTime}` : ''}` :
+             'Awaiting today\'s scan'}
+          </p>
+          <p className="text-[10px] text-lns-mid-grey">Mathematics · Mr. Okafor · Today</p>
+        </div>
+        <div className="ml-auto flex items-center gap-1">
+          <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+          <span className="text-[9px] font-black uppercase tracking-widest text-lns-mid-grey">Live</span>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

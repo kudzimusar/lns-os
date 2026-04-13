@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { 
+import {
   ChevronRight,
   GraduationCap,
   Bell,
@@ -16,24 +16,75 @@ import {
   ShieldCheck,
   Award,
   ExternalLink,
-  QrCode
+  QrCode,
+  CheckCircle2,
+  XCircle,
+  Clock
 } from "lucide-react";
 import { SealedBadge } from "@/components/blockchain/SealedBadge";
 import { generateMockHash } from "@/lib/blockchain";
-import { 
-  TabletPage, 
-  TabletHeader, 
-  TabletSection 
+import {
+  TabletPage,
+  TabletHeader,
+  TabletSection
 } from "@/components/tablet/TabletPage";
 import { PLACEHOLDER_STUDENTS, PARENT_CHILDREN } from "@/lib/placeholder-data";
+import { useAttendanceStore } from "@/store/attendanceStore";
+import { useAttendanceBroadcast } from "@/hooks/useAttendanceBroadcast";
 
 export default function ParentDashboard() {
-  // Get children for current parent (mocked to parent-001)
   const childrenIds = PARENT_CHILDREN[0].childrenIds;
-  const myChildren = PLACEHOLDER_STUDENTS.filter(s => childrenIds.includes(s.id));
+  const myChildren  = PLACEHOLDER_STUDENTS.filter(s => childrenIds.includes(s.id));
+
+  const { entries, isLocked } = useAttendanceStore();
+  useAttendanceBroadcast();
+  const studentEntry = entries.find(e => e.studentId === 'student-001');
+  const todayStatus  = studentEntry?.status ?? 'PENDING';
 
   return (
     <TabletPage className="space-y-6 md:space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-20 px-4 md:px-0">
+
+      {/* Live Attendance Status Card */}
+      <Card className="border-none shadow-sm bg-white p-6 rounded-2xl">
+        <div className="flex items-center justify-between">
+          <div className="space-y-1">
+            <p className="text-[10px] font-black uppercase tracking-widest text-lns-mid-grey">Amara Johnson · Today&apos;s Attendance</p>
+            <div className="flex items-center gap-3">
+              {todayStatus === 'PENDING' && (
+                <span className="flex items-center gap-2 text-sm font-black text-lns-mid-grey">
+                  <Clock size={18} className="text-amber-500" /> Pending ○
+                </span>
+              )}
+              {todayStatus === 'P' && (
+                <span className="flex items-center gap-2 text-sm font-black text-green-700">
+                  <CheckCircle2 size={18} className="text-green-600" /> Present ✓
+                </span>
+              )}
+              {todayStatus === 'A' && (
+                <span className="flex items-center gap-2 text-sm font-black text-lns-red">
+                  <XCircle size={18} className="text-lns-red" /> Absent ✗
+                </span>
+              )}
+              {todayStatus === 'L' && (
+                <span className="flex items-center gap-2 text-sm font-black text-amber-700">
+                  <Clock size={18} className="text-amber-500" /> Late
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-lns-mid-grey/60">Mathematics · Mr. Okafor</p>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <div className={cn(
+              "w-2 h-2 rounded-full animate-pulse",
+              isLocked ? "bg-amber-500" : "bg-green-500"
+            )} />
+            <span className="text-[9px] font-black uppercase tracking-widest text-lns-mid-grey">
+              Updates in real time
+            </span>
+          </div>
+        </div>
+      </Card>
+
       {/* Broadcast Banner - Section 13/21 Spec */}
       <Card className="border-none shadow-xl bg-[#FFFBF0] border border-amber-100 p-6 md:p-10 rounded-2xl md:rounded-3xl overflow-hidden relative group">
          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8 text-center md:text-left">

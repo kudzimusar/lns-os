@@ -4,18 +4,20 @@ import React from "react";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { 
-  BarChart3, 
-  Users, 
-  UserPlus, 
-  Megaphone, 
-  FileText, 
+import {
+  BarChart3,
+  Users,
+  UserPlus,
+  Megaphone,
+  FileText,
   ShieldAlert,
   TrendingUp,
   Activity,
   Zap,
   Clock
 } from "lucide-react";
+import { useAttendanceStore } from "@/store/attendanceStore";
+import { useAttendanceBroadcast } from "@/hooks/useAttendanceBroadcast";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 const performanceHistory = [
@@ -26,6 +28,11 @@ const performanceHistory = [
 ];
 
 export default function AdminDashboard() {
+  const { powerScore, entries } = useAttendanceStore();
+  useAttendanceBroadcast();
+  const presentCount = entries.filter(e => e.status === 'P' || e.status === 'L').length;
+  const liveScore    = entries.some(e => e.status !== 'PENDING') ? powerScore : 85;
+
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-8 px-0">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-1">
@@ -47,8 +54,13 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <Card className="border-none shadow-sm bg-white">
           <CardContent className="pt-6">
-            <Zap size={20} className="text-lns-navy mb-2" />
-            <p className="text-2xl font-[900] text-lns-navy">85.4</p>
+            <div className="flex items-center gap-2 mb-2">
+              <Zap size={20} className="text-lns-navy" />
+              <span className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-green-600">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse inline-block" /> Live
+              </span>
+            </div>
+            <p className="text-2xl font-[900] text-lns-navy">{liveScore}%</p>
             <p className="text-[10px] font-bold text-lns-mid-grey uppercase tracking-wider">Avg Power Score</p>
           </CardContent>
         </Card>
