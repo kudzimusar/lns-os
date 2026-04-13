@@ -161,7 +161,7 @@ export default function TripBoardingScanner({ params }: { params: { id: string }
                     <div>
                        <p className="text-[10px] font-black text-amber-800 uppercase leading-none mb-1">10 Minutes to Departure</p>
                        <p className="text-[11px] text-amber-700 font-medium">8 students are confirmed but not yet boarded. Dispatching 1-minute boarding alert?</p>
-                       <Button variant="link" className="p-0 h-auto text-[10px] font-black uppercase text-amber-900 mt-1">Send Broadcast</Button>
+                       <Button variant="ghost" className="p-0 h-auto text-[10px] font-black uppercase text-amber-900 mt-1">Send Broadcast</Button>
                     </div>
                  </div>
               </div>
