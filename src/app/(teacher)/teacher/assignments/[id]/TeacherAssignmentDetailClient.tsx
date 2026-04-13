@@ -18,7 +18,8 @@ import {
   Plus,
   Edit2,
   Share2,
-  AlertCircle
+  AlertCircle,
+  ShieldCheck
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";

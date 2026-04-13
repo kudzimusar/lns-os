@@ -35,6 +35,7 @@ export default function RootLayout({
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body
         className={`${manrope.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased h-full text-lns-dark-grey`}
+        suppressHydrationWarning
       >
         <StatusBanner />
         {children}

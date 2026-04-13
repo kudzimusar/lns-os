@@ -7,6 +7,7 @@ import {
   Search, 
   ArrowLeft, 
   ChevronRight, 
+  Clock,
   ShieldCheck, 
   Download, 
   TrendingUp, 

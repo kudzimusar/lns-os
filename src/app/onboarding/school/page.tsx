@@ -17,7 +17,8 @@ import {
   Calendar,
   Zap,
   CheckCircle2,
-  ArrowRight
+  ArrowRight,
+  Plus
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";

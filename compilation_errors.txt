@@ -1,0 +1,21 @@
+src/app/(parent)/parent/calendar/page.tsx(153,20): error TS2304: Cannot find name 'ShieldCheck'.
+src/app/(parent)/parent/payments/page.tsx(163,16): error TS2552: Cannot find name 'Filter'. Did you mean 'File'?
+src/app/(student)/student/resources/page.tsx(98,76): error TS2552: Cannot find name 'Clock'. Did you mean 'Lock'?
+src/app/(system)/kiosk/canteen/page.tsx(204,30): error TS2304: Cannot find name 'Loader2'.
+src/app/(teacher)/teacher/assignments/[id]/TeacherAssignmentDetailClient.tsx(172,20): error TS2304: Cannot find name 'ShieldCheck'.
+src/app/(teacher)/teacher/attendance/page.tsx(183,26): error TS2304: Cannot find name 'Link'.
+src/app/(teacher)/teacher/attendance/page.tsx(185,27): error TS2304: Cannot find name 'Link'.
+src/app/(teacher)/teacher/attendance/page.tsx(241,26): error TS2304: Cannot find name 'Sparkles'.
+src/app/(teacher)/teacher/classes/[id]/TeacherClassDetailClient.tsx(152,17): error TS2304: Cannot find name 'Activity'.
+src/app/(teacher)/teacher/gradebook/page.tsx(112,38): error TS2304: Cannot find name 'cn'.
+src/app/(teacher)/teacher/gradebook/page.tsx(168,39): error TS2304: Cannot find name 'cn'.
+src/app/(teacher)/teacher/gradebook/page.tsx(185,38): error TS2304: Cannot find name 'cn'.
+src/app/(teacher)/teacher/gradebook/page.tsx(92,39): error TS2304: Cannot find name 'cn'.
+src/app/(teacher)/teacher/scanner/page.tsx(117,41): error TS2304: Cannot find name 'setScanning'.
+src/app/(teacher)/teacher/scanner/page.tsx(159,34): error TS2304: Cannot find name 'setScanning'.
+src/app/(teacher)/teacher/scanner/page.tsx(159,47): error TS2304: Cannot find name 'scanning'.
+src/app/(teacher)/teacher/scanner/page.tsx(162,21): error TS2304: Cannot find name 'scanning'.
+src/app/(teacher)/teacher/scanner/page.tsx(165,20): error TS2304: Cannot find name 'scanning'.
+src/app/(teacher)/teacher/scanner/page.tsx(92,14): error TS2304: Cannot find name 'scanning'.
+src/app/onboarding/school/page.tsx(128,24): error TS2304: Cannot find name 'Plus'.
+src/types/index.ts(39,14): error TS2304: Cannot find name 'Student'.

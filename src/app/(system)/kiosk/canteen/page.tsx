@@ -20,7 +20,8 @@ import {
   Zap,
   Clock,
   User,
-  History
+  History,
+  Loader2
 } from "lucide-react";
 
 // Mock Data

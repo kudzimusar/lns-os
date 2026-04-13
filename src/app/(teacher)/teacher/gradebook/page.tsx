@@ -15,6 +15,7 @@ import {
   Download
 } from "lucide-react";
 import { AIFlag } from "@/components/ai/AIFlag";
+import { cn } from "@/lib/utils";
 
 const students = [
   { name: "Abraham Lincoln", scores: [85, 76, 92, 88], final: "A", citizenship: "Gold" },

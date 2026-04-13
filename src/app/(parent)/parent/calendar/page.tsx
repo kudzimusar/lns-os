@@ -12,7 +12,8 @@ import {
   Bell,
   Globe,
   Monitor,
-  Activity
+  Activity,
+  ShieldCheck
 } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";

@@ -35,6 +35,7 @@ export default function QRScannerPage() {
   const isLandscape = useMediaQuery("(orientation: landscape) and (min-width: 768px)");
   const [showSealToast, setShowSealToast] = useState(false);
   const [sealDetails, setSealDetails] = useState({ hash: '', timestamp: '' });
+  const [scanning, setScanning] = useState(false);
 
   const handleFinalize = () => {
     const hash = generateMockHash();

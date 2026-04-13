@@ -24,7 +24,8 @@ import {
   ShoppingBag,
   ExternalLink,
   ShieldCheck,
-  Zap
+  Zap,
+  Filter
 } from "lucide-react";
 
 const outstandingPayments = [
