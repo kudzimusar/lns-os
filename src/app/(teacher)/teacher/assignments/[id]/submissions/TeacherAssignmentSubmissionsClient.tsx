@@ -16,7 +16,8 @@ import {
   Search,
   Plus,
   TrendingUp,
-  FileText
+  FileText,
+  Filter
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -163,4 +164,3 @@ export default function TeacherAssignmentSubmissionsClient({ params }: { params:
     </div>
   );
 }
-import { Filter } from "lucide-react";

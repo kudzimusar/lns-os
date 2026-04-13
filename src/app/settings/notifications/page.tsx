@@ -11,6 +11,7 @@ import {
   Mail,
   Smartphone,
   MessageSquare,
+  MessagesSquare,
   ShieldCheck,
   Globe,
   Monitor
@@ -165,4 +166,3 @@ export default function SettingsNotificationsPage() {
     </div>
   );
 }
-import { MessagesSquare } from "lucide-react";
